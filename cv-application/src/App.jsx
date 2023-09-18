@@ -108,28 +108,27 @@ function App() {
     setIsSectionActiveIndex: setIsSectionActiveIndex,
     sectionFormActiveIndex: sectionFormActiveIndex,
     setSectionFormActiveIndex: setSectionFormActiveIndex,
-    items: {
-      education: {
-        items: educationItems,
-        setItems: setEducationItems,
-        itemEdit: educationItemEdit,
-        setItemEdit: setEducationItemEdit,
-        itemEditIndex: educationItemEditIndex,
-        setItemEditIndex: setEducationItemEditIndex
-      },
-      experience: {
-        items: experienceItems,
-        setItems: setExperienceItems,
-        itemEdit: experienceItemEdit,
-        setItemEdit: setExperienceItemEdit,
-        itemEditIndex: experienceItemEditIndex,
-        setItemEditIndex: setExperienceItemEditIndex
-      }
-    }
   }
 
+  const educationSectionStates = {
+    educationItems: educationItems,
+    setEducationItems: setEducationItems,
+    educationItemEdit: educationItemEdit,
+    setEducationItemEdit: setEducationItemEdit,
+    educationItemEditIndex: educationItemEditIndex,
+    setEducationItemEditIndex: setEducationItemEditIndex
+  }
 
-  const formInputs = {
+  const experienceSectionStates = {
+    experienceItems: experienceItems,
+    setExperienceItems: setExperienceItems,
+    experienceItemEdit: experienceItemEdit,
+    setExperienceItemEdit: setExperienceItemEdit,
+    experienceItemEditIndex: experienceItemEditIndex,
+    setExperienceItemEditIndex: setExperienceItemEditIndex
+  }
+
+  const personalDetailsFormStates = {
     fullname: fullname,
     setFullname: setFullname,
     email: email,
@@ -138,57 +137,71 @@ function App() {
     setPhoneNumber: setPhoneNumber,
     address: address,
     setAddress: setAddress,
-    education: {
-      primary: school,
-      setPrimary: setSchool,
-      secondary: degree,
-      setSecondary: setDegree,
-      startDate: schoolStartDate,
-      setStartDate: setSchoolStartDate,
-      endDate: schoolEndDate,
-      setEndDate: setSchoolEndDate,
-      loc: schoolLocation,
-      setLoc: setSchoolLocation,
-    },
-    experience: {
-      primary: company,
-      setPrimary: setCompany,
-      secondary: jobTitle,
-      setSecondary: setJobTitle,
-      startDate: companyStartDate,
-      setStartDate: setCompanyStartDate,
-      endDate: companyEndDate,
-      setEndDate: setCompanyEndDate,
-      loc: companyLocation,
-      setLoc: setCompanyLocation,
-    }
   }
 
-  const formInputsEventHandlers = {
+  const personalDetailsFormEventHandlers = {
     handleFullnameChange: handleFullnameChange,
     handleEmailChange: handleEmailChange,
     handlePhoneNumberChange: handlePhoneNumberChange,
     handleAddressChange: handleAddressChange,
-    education: {
-      primary: handleSchoolChange,
-      secondary: handleDegreeChange,
-      startDate: handleSchoolStartDateChange,
-      endDate: handleSchoolEndDateChange,
-      loc: handleSchoolLocationChange,
-    },
-    experience: {
-      primary: handleCompanyChange,
-      secondary: handleJobTitleChange,
-      startDate: handleCompanyStartDateChange,
-      endDate: handleCompanyEndDateChange,
-      loc: handleCompanyLocationChange,
-    }
+  }
+
+  const educationSectionFormStates = {
+    school: school,
+    setSchool: setSchool,
+    degree: degree,
+    setDegree: setDegree,
+    schoolStartDate: schoolStartDate,
+    setSchoolStartDate: setSchoolStartDate,
+    schoolEndDate: schoolEndDate,
+    setSchoolEndDate: setSchoolEndDate,
+    schoolLocation: schoolLocation,
+    setSchoolLocation: setSchoolLocation
+  }
+
+  const experienceSectionFormStates = {
+    company: company,
+    setCompany: setCompany,
+    jobTitle: jobTitle,
+    setJobTitle: setJobTitle,
+    companyStartDate: companyStartDate,
+    setCompanyStartDate: setCompanyStartDate,
+    companyEndDate: companyEndDate,
+    setCompanyEndDate: setCompanyEndDate,
+    companyLocation: companyLocation,
+    setCompanyLocation: setCompanyLocation,
+  }
+
+  const educationSectionFormEventHandlers = {
+    handleSchoolChange: handleSchoolChange,
+    handleDegreeChange: handleDegreeChange,
+    handleSchoolStartDateChange: handleSchoolStartDateChange,
+    handleSchoolEndDateChange: handleSchoolEndDateChange,
+    handleSchoolLocationChange: handleSchoolLocationChange,
+  }
+
+  const experienceSectionFormEventHandlers = {
+    handleCompanyChange: handleCompanyChange,
+    handleJobTitleChange: handleJobTitleChange,
+    handleCompanyStartDateChange: handleCompanyStartDateChange,
+    handleCompanyEndDateChange: handleCompanyEndDateChange,
+    handleCompanyLocationChange: handleCompanyLocationChange,
   }
 
   return (
     <>
       <Sidebar />
-      <Content formInputs={formInputs} formInputsEventHandlers={formInputsEventHandlers} sectionStates={sectionStates} />
+      <Content 
+        personalDetailsFormStates = { personalDetailsFormStates }
+        personalDetailsFormEventHandlers = { personalDetailsFormEventHandlers }
+        sectionStates = { sectionStates }
+        educationSectionStates = { educationSectionStates }
+        experienceSectionStates = { experienceSectionStates }
+        educationSectionFormStates = { educationSectionFormStates }
+        experienceSectionFormStates = { experienceSectionFormStates }
+        educationSectionFormEventHandlers = { educationSectionFormEventHandlers }
+        experienceSectionFormEventHandlers = { experienceSectionFormEventHandlers }
+      />
       <Preview />
     </>
   )

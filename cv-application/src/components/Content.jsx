@@ -8,16 +8,93 @@ import addIcon from "../assets/add.svg"
 import eyeIcon from "../assets/eye.svg"
 import "../styles/Content.css";
 
-export default function Content({formInputs, formInputsEventHandlers, sectionStates}) {
+export default function Content({
+    personalDetailsFormStates: { 
+        fullname,
+        setFullname,
+        email,
+        setEmail,
+        phoneNumber,
+        setPhoneNumber,
+        address,
+        setAddress
+    },
+    personalDetailsFormEventHandlers: { 
+        handleFullnameChange, 
+        handleEmailChange, 
+        handlePhoneNumberChange, 
+        handleAddressChange 
+    },
+    sectionStates: {
+        isSectionActiveIndex,
+        setIsSectionActiveIndex,
+        sectionFormActiveIndex,
+        setSectionFormActiveIndex
+    },
+    educationSectionStates: {
+        educationItems,
+        setEducationItems,
+        educationItemEdit,
+        setEducationItemEdit,
+        educationItemEditIndex,
+        setEducationItemEditIndex
+    },
+    experienceSectionStates: {
+        experienceItems,
+        setExperienceItems,
+        experienceItemEdit,
+        setExperienceItemEdit,
+        experienceItemEditIndex,
+        setExperienceItemEditIndex
+    },
+    educationSectionFormStates: {
+        school,
+        setSchool,
+        degree,
+        setDegree,
+        schoolStartDate,
+        setSchoolStartDate,
+        schoolEndDate,
+        setSchoolEndDate,
+        schoolLocation,
+        setSchoolLocation
+    },
+    experienceSectionFormStates: {
+        company,
+        setCompany,
+        jobTitle,
+        setJobTitle,
+        companyStartDate,
+        setCompanyStartDate,
+        companyEndDate,
+        setCompanyEndDate,
+        companyLocation,
+        setCompanyLocation,
+    },
+    educationSectionFormEventHandlers: {
+        handleSchoolChange,
+        handleDegreeChange,
+        handleSchoolStartDateChange,
+        handleSchoolEndDateChange,
+        handleSchoolLocationChange,
+    },
+    experienceSectionFormEventHandlers: {
+        handleCompanyChange,
+        handleJobTitleChange,
+        handleCompanyStartDateChange,
+        handleCompanyEndDateChange,
+        handleCompanyLocationChange,
+    }, 
+    }) {
 
     const loadSample = () => {
-        formInputs.setFullname(sample.fullname)
-        formInputs.setEmail(sample.email)
-        formInputs.setPhoneNumber(sample.phoneNumber)
-        formInputs.setAddress(sample.address)
+        setFullname(sample.fullname)
+        setEmail(sample.email)
+        setPhoneNumber(sample.phoneNumber)
+        setAddress(sample.address)
 
-        const educationItems = sectionStates.items.education.items
-        const experienceItems = sectionStates.items.experience.items
+        const newEducationItems = [...educationItems]
+        const newExperienceItems = [...experienceItems]
 
         const educationItem = {
             primary: sample.education.primary,
@@ -35,45 +112,45 @@ export default function Content({formInputs, formInputsEventHandlers, sectionSta
             loc: sample.experience.location
         }
 
-        educationItems.push(educationItem)
-        experienceItems.push(experienceItem)
-        sectionStates.items.education.setItems(educationItems)
-        sectionStates.items.experience.setItems(experienceItems)
+        newEducationItems.push(educationItem)
+        newExperienceItems.push(experienceItem)
+        setEducationItems(newEducationItems)
+        setExperienceItems(newExperienceItems)
 
     }
 
     const clearResume = () => {
-        formInputs.setFullname("")
-        formInputs.setEmail("")
-        formInputs.setPhoneNumber("")
-        formInputs.setAddress("")
+        setFullname("")
+        setEmail("")
+        setPhoneNumber("")
+        setAddress("")
 
-        const educationItems = sectionStates.items.education.items
-        const experienceItems = sectionStates.items.experience.items
+        const newEducationItems = [...educationItems]
+        const newExperienceItems = [...experienceItems]
 
-        educationItems.length = 0
-        experienceItems.length = 0
+        newEducationItems.length = 0
+        newExperienceItems.length = 0
 
-        sectionStates.items.education.setItems(educationItems)
-        sectionStates.items.experience.setItems(experienceItems)
+        setEducationItems(newEducationItems)
+        setExperienceItems(newExperienceItems)
     }
 
     const toggleSection = (index) => {
-        if (sectionStates.isSectionActiveIndex === index) {
-            sectionStates.setIsSectionActiveIndex(null)
-            sectionStates.setSectionFormActiveIndex(null)
+        if (isSectionActiveIndex === index) {
+            setIsSectionActiveIndex(null)
+            setSectionFormActiveIndex(null)
         } else {
-            sectionStates.setIsSectionActiveIndex(index)
-            sectionStates.setSectionFormActiveIndex(null)
+            setIsSectionActiveIndex(index)
+            setSectionFormActiveIndex(null)
         }
     }
 
     const showForm = (index) => {
-        sectionStates.setSectionFormActiveIndex(index)
+        setSectionFormActiveIndex(index)
     }
 
     const hideForm = () => {
-        sectionStates.setSectionFormActiveIndex(null)
+        setSectionFormActiveIndex(null)
     }
 
     return (
@@ -87,74 +164,190 @@ export default function Content({formInputs, formInputsEventHandlers, sectionSta
                     Clear
                 </button>
             </div>
-            
-            <PersonalDetails formInputs={formInputs} formInputsEventHandlers={formInputsEventHandlers} />
 
-            <Section sectionStates={sectionStates.items.education} formInputs={formInputs.education} formInputsEventHandlers={formInputsEventHandlers.education} mainIcon={educationIcon} text="Education" addIcon={addIcon} isSectionActive={sectionStates.isSectionActiveIndex === 0} onShow={() => toggleSection(0)} formFields={educationFormFields} isSectionFormActive={sectionStates.sectionFormActiveIndex === 0} onShowSectionForm={() => showForm(0)} onHideSectionForm={() => hideForm()} />
+            <PersonalDetails
+                fullname = { fullname }
+                email = { email }
+                phoneNumber = { phoneNumber }
+                address = { address }
+                handleFullnameChange = { handleFullnameChange }
+                handleEmailChange = { handleEmailChange }
+                handlePhoneNumberChange = { handlePhoneNumberChange }
+                handleAddressChange = { handleAddressChange } 
+            />
 
-            <Section sectionStates={sectionStates.items.experience} formInputs={formInputs.experience} formInputsEventHandlers={formInputsEventHandlers.experience} mainIcon={experienceIcon} text="Professional Experience" addIcon={addIcon} isSectionActive={sectionStates.isSectionActiveIndex === 1} onShow={() => toggleSection(1)} formFields={experienceFormFields} isSectionFormActive={sectionStates.sectionFormActiveIndex  === 1} onShowSectionForm={() => showForm(1)} onHideSectionForm={() => hideForm()} />
+            <Section
+                items = { educationItems }
+                setItems = { setEducationItems }
+                itemEdit = { educationItemEdit }
+                setItemEdit = { setEducationItemEdit }
+                itemEditIndex = { educationItemEditIndex }
+                setItemEditIndex = { setEducationItemEditIndex }
+                primary = { school }
+                setPrimary = { setSchool }
+                secondary = {degree}
+                setSecondary = {setDegree}
+                startDate = {schoolStartDate}
+                setStartDate = {setSchoolStartDate}
+                endDate = {schoolEndDate}
+                setEndDate = {setSchoolEndDate}
+                loc = {schoolLocation}
+                setLoc = {setSchoolLocation}
+                handlePrimary = {handleSchoolChange}
+                handleSecondary = {handleDegreeChange}
+                handleStartDate = {handleSchoolStartDateChange}
+                handleEndDate = {handleSchoolEndDateChange}
+                handleLocation = {handleSchoolLocationChange}
+                 
+                mainIcon={educationIcon} 
+                text="Education" 
+                addIcon={addIcon} 
+                isSectionActive={isSectionActiveIndex === 0} 
+                onShow={() => toggleSection(0)} 
+                formFields={educationFormFields} 
+                isSectionFormActive={sectionFormActiveIndex === 0} 
+                onShowSectionForm={() => showForm(0)} 
+                onHideSectionForm={() => hideForm()}
+            />
+
+            <Section
+                items = { experienceItems }
+                setItems = { setExperienceItems }
+                itemEdit = { experienceItemEdit }
+                setItemEdit = { setExperienceItemEdit }
+                itemEditIndex = { experienceItemEditIndex }
+                setItemEditIndex = { setExperienceItemEditIndex }
+                primary = { company }
+                setPrimary = { setCompany }
+                secondary = {jobTitle}
+                setSecondary = {setJobTitle}
+                startDate = {companyStartDate}
+                setStartDate = {setCompanyStartDate}
+                endDate = {companyEndDate}
+                setEndDate = {setCompanyEndDate}
+                loc = {companyLocation}
+                setLoc = {setCompanyLocation}
+                handlePrimary = {handleCompanyChange}
+                handleSecondary = {handleJobTitleChange}
+                handleStartDate = {handleCompanyStartDateChange}
+                handleEndDate = {handleCompanyEndDateChange}
+                handleLocation = {handleCompanyLocationChange}
+  
+                mainIcon={experienceIcon} 
+                text="Professional Experience" 
+                addIcon={addIcon} 
+                isSectionActive={isSectionActiveIndex === 1} 
+                onShow={() => toggleSection(1)} 
+                formFields={experienceFormFields} 
+                isSectionFormActive={sectionFormActiveIndex  === 1} 
+                onShowSectionForm={() => showForm(1)} 
+                onHideSectionForm={() => hideForm()} 
+            />
         </div>
     )
 }
 
-function PersonalDetails({formInputs, formInputsEventHandlers}) {
+function PersonalDetails({
+    fullname,
+    email,
+    phoneNumber,
+    address,
+    handleFullnameChange,
+    handleEmailChange,
+    handlePhoneNumberChange,
+    handleAddressChange,
+    }) {
+
+    const inputFields = [
+        { id: "name", label: "Full name", placeholder: "First and last name", value: fullname, onChange:handleFullnameChange },
+        { id: "email", label: "Email", placeholder: "Enter email", value: email, onChange: handleEmailChange },
+        { id: "phone", label: "Phone number", placeholder: "Enter phone number", value: phoneNumber, onChange: handlePhoneNumberChange },
+        { id: "address", label: "Address", placeholder: "City, Country", value: address, onChange: handleAddressChange },
+    ]
+
     return (
         <div className="personalDetails">
             <h1>Personal Details</h1>
             <form action="" className="personalDetailsForm">
-                <label htmlFor="name">Full name</label>
-                <input type="text" id="name" value={formInputs.fullname} placeholder="First and last name" onChange={formInputsEventHandlers.handleFullnameChange} />
-                <label htmlFor="email">Email <span>recommended</span></label>
-                <input type="email" id="email" value={formInputs.email} placeholder="Enter email" onChange={formInputsEventHandlers.handleEmailChange} />
-                <label htmlFor="phone">Phone number <span>recommended</span></label>
-                <input type="text" id="phone" value={formInputs.phoneNumber} placeholder="Enter phone number" onChange={formInputsEventHandlers.handlePhoneNumberChange} />
-                <label htmlFor="address">Address <span>recommended</span></label>
-                <input type="text" id="address" value={formInputs.address} placeholder="City, Country" onChange={formInputsEventHandlers.handleAddressChange} />
+                {inputFields.map((field) => (
+                    <>
+                        <label htmlFor={field.id}>
+                            {field.label} <span>recommended</span>
+                        </label>
+                        <input type="text" id={field.id} value={field.value} placeholder={field.placeholder} onChange={field.onChange} />
+                    </>
+                ))}
             </form>
         </div>
     )
 }
 
-function Section({sectionStates, formInputs, formInputsEventHandlers, mainIcon, text, addIcon, isSectionActive, onShow, formFields, isSectionFormActive, onShowSectionForm, onHideSectionForm}) {
+function Section({
+    items,
+    setItems,
+    itemEdit,
+    setItemEdit,
+    itemEditIndex,
+    setItemEditIndex,
+    primary,
+    setPrimary,
+    secondary,
+    setSecondary,
+    startDate,
+    setStartDate,
+    endDate,
+    setEndDate,
+    loc,
+    setLoc,
+    handlePrimary,
+    handleSecondary,
+    handleStartDate,
+    handleEndDate,
+    handleLocation,
+
+    mainIcon, 
+    text, 
+    addIcon, 
+    isSectionActive, 
+    onShow, 
+    formFields, 
+    isSectionFormActive, 
+    onShowSectionForm, 
+    onHideSectionForm}) {
 
     const resetInputs = () => {
-        formInputs.setPrimary("")
-        formInputs.setSecondary("")
-        formInputs.setStartDate("")
-        formInputs.setEndDate("")
-        formInputs.setLoc("")
+        setPrimary("")
+        setSecondary("")
+        setStartDate("")
+        setEndDate("")
+        setLoc("")
     }
 
     const cancelEdit = (event) => {
         event.preventDefault()
         resetInputs()
         onHideSectionForm()
-        sectionStates.setItemEdit(false)
-        sectionStates.setItemEditIndex(null)
+        setItemEdit(false)
+        setItemEditIndex(null)
     }
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
-        const newItems = sectionStates.items
+        const newItems = [...items]
         
         const item = {
-            primary: formInputs.primary,
-            secondary: formInputs.secondary,
-            startDate: formInputs.startDate,
-            endDate: formInputs.endDate,
-            loc: formInputs.loc
+            primary,
+            secondary,
+            startDate,
+            endDate,
+            loc
         }
 
-        if (sectionStates.itemEdit) {
-            newItems[sectionStates.itemEditIndex] = item
-            sectionStates.setItems(newItems)
-            sectionStates.setItemEdit(false)
-            sectionStates.setItemEditIndex(null)
-        } else {
-            newItems.push(item)
-            sectionStates.setItems(newItems)
-            sectionStates.setItemEditIndex(null)
-        }
+        itemEdit ? newItems[itemEditIndex] = item : newItems.push(item)
+
+        setItems(newItems)
+        setItemEdit(false)
+        setItemEditIndex(null)
 
         onHideSectionForm()
         resetInputs()
@@ -162,10 +355,10 @@ function Section({sectionStates, formInputs, formInputsEventHandlers, mainIcon, 
 
     const deleteItem = (event) => {
         event.preventDefault()
-        const newItems = sectionStates.items
-        newItems.splice(sectionStates.itemEditIndex, 1)
-        sectionStates.setItems(newItems)
-        sectionStates.setItemEdit(false)
+        const newItems = [...items]
+        newItems.splice(itemEditIndex, 1)
+        setItems(newItems)
+        setItemEdit(false)
 
         onHideSectionForm()
         resetInputs()
@@ -173,22 +366,16 @@ function Section({sectionStates, formInputs, formInputsEventHandlers, mainIcon, 
 
     const editItem = (event) => {
         const index = Number(event.target.dataset.key)
-        sectionStates.setItemEdit(true)
-        sectionStates.setItemEditIndex(index)
+        setItemEdit(true)
+        setItemEditIndex(index)
 
-        const item = sectionStates.items[index]
+        const item = items[index]
 
-        const newPrimary = item.primary
-        const newSecondary = item.secondary
-        const newStartDate = item.startDate
-        const newEndDate = item.endDate
-        const newLoc = item.loc
-
-        formInputs.setPrimary(newPrimary)
-        formInputs.setSecondary(newSecondary)
-        formInputs.setStartDate(newStartDate)
-        formInputs.setEndDate(newEndDate)
-        formInputs.setLoc(newLoc)
+        setPrimary(item.primary)
+        setSecondary(item.secondary)
+        setStartDate(item.startDate)
+        setEndDate(item.endDate)
+        setLoc(item.loc)
 
         onShowSectionForm()
     }
@@ -205,27 +392,27 @@ function Section({sectionStates, formInputs, formInputsEventHandlers, mainIcon, 
                 </button>
             </div>
             <div className="sectionBody">
-                {sectionStates.items.length > 0 && isSectionActive && !isSectionFormActive && (
-                    <SectionList items={sectionStates.items} editItem={() => editItem(event)} />
+                {items.length > 0 && isSectionActive && !isSectionFormActive && (
+                    <SectionList items={items} editItem={() => editItem(event)} />
                 )}
                 {isSectionFormActive && (
                     <form action="" className="sectionForm">
                         <label htmlFor="primary">{formFields.primary.label}</label>
-                        <input type="text" id="primary" value={formInputs.primary} placeholder={formFields.primary.placeholder} onChange={formInputsEventHandlers.primary} />
+                        <input type="text" id="primary" value={primary} placeholder={formFields.primary.placeholder} onChange={handlePrimary} />
                         <label htmlFor="secondary">{formFields.secondary.label}</label>
-                        <input type="text" id="secondary" value={formInputs.secondary} placeholder={formFields.secondary.placeholder} onChange={formInputsEventHandlers.secondary} />
+                        <input type="text" id="secondary" value={secondary} placeholder={formFields.secondary.placeholder} onChange={handleSecondary} />
                         <div className="dateArea">
                             <div className="start">
                                 <label htmlFor="startDate">{formFields.startDate.label}</label>
-                                <input type="date" id="startDate" value={formInputs.startDate} placeholder={formFields.startDate.placeholder} onChange={formInputsEventHandlers.startDate} />
+                                <input type="date" id="startDate" value={startDate} placeholder={formFields.startDate.placeholder} onChange={handleStartDate} />
                             </div>
                             <div className="end">
                                 <label htmlFor="endDate">{formFields.endDate.label}</label>
-                                <input type="date" id="endDate" value={formInputs.endDate} placeholder={formFields.endDate.placeholder} onChange={formInputsEventHandlers.endDate} />
+                                <input type="date" id="endDate" value={endDate} placeholder={formFields.endDate.placeholder} onChange={handleEndDate} />
                             </div>
                         </div>
                         <label htmlFor="location">{formFields.location.label}</label>
-                        <input type="text" id="location" value={formInputs.loc} placeholder={formFields.location.placeholder} onChange={formInputsEventHandlers.loc} />
+                        <input type="text" id="location" value={loc} placeholder={formFields.location.placeholder} onChange={handleLocation} />
                         <div className="footerArea">
                             <div className="left">
                                 <button onClick={() => deleteItem(event)}>
@@ -253,16 +440,24 @@ function Section({sectionStates, formInputs, formInputsEventHandlers, mainIcon, 
     )
 }
 
-function SectionList({items, editItem}) {
-    const listItems = items.map((item, index) =>
-        <li className="sectionListItem" data-key={index} key={index} onClick={editItem}>
+function SectionList({ items, editItem }) {
+    return (
+      <ul className="sectionList">
+        {items.map((item, index) => (
+          <li
+            className="sectionListItem"
+            data-key={index}
+            key={index}
+            onClick={() => editItem(item)}
+          >
             {item.primary}
             <img src={eyeIcon} alt="Eye icon" />
-        </li>
-    )
-
-    return <ul className="sectionList">{listItems}</ul>
-}
+          </li>
+        ))}
+      </ul>
+    );
+  }
+  
 
 const educationFormFields = {
     primary: {
