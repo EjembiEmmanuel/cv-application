@@ -5,6 +5,8 @@
 
 #root {
     background-color: #eef0f4;
+    display: flex;
+    justify-content: space-between;
     font-family: Roboto;
     width: 100%;
     padding: 2rem;
