@@ -22,37 +22,6 @@
     width: 30em;
 }
 
-.content .header {
-    background-color: white;
-    display: flex;
-    justify-content: space-evenly;
-    padding: 1.5em 1em;
-    margin: 0 0 1.5em 0;
-    filter: drop-shadow(0 0 0.2em rgb(198, 188, 188));
-    border-radius: 20px;
-}
-
-.content .header .headerBtn {
-    background-color: #eef0f4;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    padding: 0.5em 1em;
-    width: 45%;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-}
-
-.content .header .headerBtn.clear {
-    color: red;
-    fill: red;
-}
-
-.content .header .headerBtn .delete-logo {
-    margin: 0 0.5em 0 0;
-}
-
 .content .personalDetails {
     background-color: white;
     display: flex;

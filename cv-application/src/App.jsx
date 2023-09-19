@@ -1,7 +1,9 @@
 import { useState } from 'react'
+import { sample } from "../sample";
 import Sidebar from './components/Sidebar'
 import Content from './components/Content'
 import Preview from './components/Preview'
+import deleteIcon from "./assets/delete-red.svg"
 import './App.css'
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
   const [experienceItems, setExperienceItems] = useState([]);
   const [experienceItemEdit, setExperienceItemEdit] = useState(false);
   const [experienceItemEditIndex, setExperienceItemEditIndex] = useState(null);
+
+  const [layout, setLayout] = useState("topLayout")
 
   // Event handlers for personal details form fields
   const handleFullnameChange = (event) => {
@@ -198,27 +202,103 @@ function App() {
     handleCompanyLocationChange,
   }
 
+  // Function to load sample data into the form
+  const loadSample = () => {
+    // Set personal details from a sample object
+    setFullname(sample.fullname);
+    setEmail(sample.email);
+    setPhoneNumber(sample.phoneNumber);
+    setAddress(sample.address);
+
+    // Create new arrays for education and experience items
+    const newEducationItems = [...educationItems];
+    const newExperienceItems = [...experienceItems];
+
+    // Define education and experience items from sample data
+    const educationItem = {
+      primary: sample.education.primary,
+      secondary: sample.education.secondary,
+      startDate: sample.education.startDate,
+      endDate: sample.education.endDate,
+      loc: sample.education.location
+    };
+
+    const experienceItem = {
+      primary: sample.experience.primary,
+      secondary: sample.experience.secondary,
+      startDate: sample.experience.startDate,
+      endDate: sample.experience.endDate,
+      loc: sample.experience.location
+    };
+
+    // Add education and experience items to their respective arrays
+    newEducationItems.push(educationItem);
+    newExperienceItems.push(experienceItem);
+
+    // Update the state with the new education and experience items
+    setEducationItems(newEducationItems);
+    setExperienceItems(newExperienceItems);
+  };
+
+  // Function to clear the resume form
+  const clearResume = () => {
+    // Clear personal details
+    setFullname("");
+    setEmail("");
+    setPhoneNumber("");
+    setAddress("");
+
+    // Create new arrays for education and experience items
+    const newEducationItems = [...educationItems];
+    const newExperienceItems = [...experienceItems];
+
+    // Clear the education and experience items arrays
+    newEducationItems.length = 0;
+    newExperienceItems.length = 0;
+
+    // Update the state with the cleared arrays
+    setEducationItems(newEducationItems);
+    setExperienceItems(newExperienceItems);
+  };
+
   return (
     <>
       {/* Render the sidebar */}
       <Sidebar />
-      {/* Render the main content with props */}
-      <Content 
-        personalDetailsFormStates={personalDetailsFormStates}
-        personalDetailsFormEventHandlers={personalDetailsFormEventHandlers}
-        sectionStates={sectionStates}
-        educationSectionStates={educationSectionStates}
-        experienceSectionStates={experienceSectionStates}
-        educationSectionFormStates={educationSectionFormStates}
-        experienceSectionFormStates={experienceSectionFormStates}
-        educationSectionFormEventHandlers={educationSectionFormEventHandlers}
-        experienceSectionFormEventHandlers={experienceSectionFormEventHandlers}
-      />
+
+      <div className="main">
+        <div className="header">
+          {/* Button to load sample data */}
+          <button onClick={loadSample} className="headerBtn load">
+            Load Sample
+          </button>
+          {/* Button to clear the resume form */}
+          <button onClick={clearResume} className="headerBtn clear">
+            <img src={deleteIcon} className="delete-logo" alt="delete icon" />
+            Clear
+          </button>
+        </div>
+
+        {/* Render the main content with props */}
+        <Content 
+          personalDetailsFormStates={personalDetailsFormStates}
+          personalDetailsFormEventHandlers={personalDetailsFormEventHandlers}
+          sectionStates={sectionStates}
+          educationSectionStates={educationSectionStates}
+          experienceSectionStates={experienceSectionStates}
+          educationSectionFormStates={educationSectionFormStates}
+          experienceSectionFormStates={experienceSectionFormStates}
+          educationSectionFormEventHandlers={educationSectionFormEventHandlers}
+          experienceSectionFormEventHandlers={experienceSectionFormEventHandlers}
+        />
+      </div>
+      
       {/* Render a preview section */}
       <Preview
-        personalDetailsFormStates={personalDetailsFormStates}
-        educationSectionStates={educationSectionStates}
-        experienceSectionStates={experienceSectionStates}
+        personalDetailsFormStates = {personalDetailsFormStates}
+        educationSectionStates = {educationSectionStates}
+        experienceSectionStates = {experienceSectionStates}
+        layout = {layout}
       />
     </>
   )
