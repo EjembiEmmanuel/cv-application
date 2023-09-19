@@ -18,10 +18,6 @@
     transform: rotate(180deg);
 }
 
-.content {
-    width: 30em;
-}
-
 .content .personalDetails {
     background-color: white;
     display: flex;

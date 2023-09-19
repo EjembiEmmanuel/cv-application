@@ -1,6 +1,4 @@
-import { sample } from "../../sample";
 import blackDeleteIcon from "../assets/delete-black.svg"
-import deleteIcon from "../assets/delete-red.svg"
 import educationIcon from "../assets/education.svg"
 import experienceIcon from "../assets/experience.svg"
 import downArrowIcon from "../assets/down-arrow.svg"
@@ -12,13 +10,9 @@ import "../styles/Content.css";
 export default function Content({
   personalDetailsFormStates: {
     fullname,
-    setFullname,
     email,
-    setEmail,
     phoneNumber,
-    setPhoneNumber,
-    address,
-    setAddress
+    address
   },
   personalDetailsFormEventHandlers: {
     handleFullnameChange,
@@ -87,65 +81,6 @@ export default function Content({
     handleCompanyLocationChange
   }
 }) {
-
-  // Function to load sample data into the form
-  const loadSample = () => {
-    // Set personal details from a sample object
-    setFullname(sample.fullname);
-    setEmail(sample.email);
-    setPhoneNumber(sample.phoneNumber);
-    setAddress(sample.address);
-
-    // Create new arrays for education and experience items
-    const newEducationItems = [...educationItems];
-    const newExperienceItems = [...experienceItems];
-
-    // Define education and experience items from sample data
-    const educationItem = {
-      primary: sample.education.primary,
-      secondary: sample.education.secondary,
-      startDate: sample.education.startDate,
-      endDate: sample.education.endDate,
-      loc: sample.education.location
-    };
-
-    const experienceItem = {
-      primary: sample.experience.primary,
-      secondary: sample.experience.secondary,
-      startDate: sample.experience.startDate,
-      endDate: sample.experience.endDate,
-      loc: sample.experience.location
-    };
-
-    // Add education and experience items to their respective arrays
-    newEducationItems.push(educationItem);
-    newExperienceItems.push(experienceItem);
-
-    // Update the state with the new education and experience items
-    setEducationItems(newEducationItems);
-    setExperienceItems(newExperienceItems);
-  };
-
-  // Function to clear the resume form
-  const clearResume = () => {
-    // Clear personal details
-    setFullname("");
-    setEmail("");
-    setPhoneNumber("");
-    setAddress("");
-
-    // Create new arrays for education and experience items
-    const newEducationItems = [...educationItems];
-    const newExperienceItems = [...experienceItems];
-
-    // Clear the education and experience items arrays
-    newEducationItems.length = 0;
-    newExperienceItems.length = 0;
-
-    // Update the state with the cleared arrays
-    setEducationItems(newEducationItems);
-    setExperienceItems(newExperienceItems);
-  };
 
   // Function to toggle the visibility of a section
   const toggleSection = (index) => {
@@ -218,18 +153,6 @@ const experienceFormFields = {
 
   return (
     <div className="content">
-      <div className="header">
-        {/* Button to load sample data */}
-        <button onClick={loadSample} className="headerBtn load">
-          Load Sample
-        </button>
-        {/* Button to clear the resume form */}
-        <button onClick={clearResume} className="headerBtn clear">
-          <img className="delete-logo" src={deleteIcon} alt="delete icon" />
-          Clear
-        </button>
-      </div>
-
       {/* Render the personal details section */}
       <PersonalDetails
         fullname={fullname}

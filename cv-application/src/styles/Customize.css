@@ -1,0 +1,102 @@
+.customize .layout {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1.5em 1em;
+    margin: 0 0 1.5em 0;
+    filter: drop-shadow(0 0 0.2em rgb(198, 188, 188));
+    border-radius: 20px;
+}
+
+.customize .layout .title {
+    font-weight: bold;
+    margin: 0 0 1em 0;
+}
+
+.customize .layout .layoutToggles {
+    display: flex;
+}
+
+.customize .layout .layoutToggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8em;
+    margin: 0 1em 0 0;
+}
+
+.customize .layout .layoutToggle .top,
+.customize .layout .layoutToggle .left,
+.customize .layout .layoutToggle .right {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    position: relative;
+    background: none;
+    color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.customize .layout .layoutToggle .top::before {
+    content: "";
+    position: absolute;
+    bottom: 50%;
+    right: 0%;
+    width: 50%;
+    height: 100%;
+    background-color: black;
+}
+  
+.customize .layout .layoutToggle .top::after {
+    content: "";
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    width: 50%;
+    height: 100%;
+    background-color: black;
+}
+
+.customize .layout .layoutToggle .left::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: black;
+}
+  
+.customize .layout .layoutToggle .left::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+}
+
+.customize .layout .layoutToggle .right::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: white;
+}
+  
+.customize .layout .layoutToggle .right::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background-color: black;
+}

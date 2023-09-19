@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { sample } from "../sample";
 import Sidebar from './components/Sidebar'
 import Content from './components/Content'
+import Customize from './components/Customize';
 import Preview from './components/Preview'
 import deleteIcon from "./assets/delete-red.svg"
 import './App.css'
@@ -114,6 +115,11 @@ function App() {
   const handleCompanyLocationChange = (event) => {
     const newCompanyLocation = event.target.value;
     setCompanyLocation(newCompanyLocation);
+  }
+
+  const handleLayoutChange = (layout) => {
+    const newLayout = layout
+    setLayout(newLayout)
   }
 
   // Define state objects for easier passing as props
@@ -280,7 +286,7 @@ function App() {
         </div>
 
         {/* Render the main content with props */}
-        <Content 
+        {/* <Content 
           personalDetailsFormStates={personalDetailsFormStates}
           personalDetailsFormEventHandlers={personalDetailsFormEventHandlers}
           sectionStates={sectionStates}
@@ -290,9 +296,12 @@ function App() {
           experienceSectionFormStates={experienceSectionFormStates}
           educationSectionFormEventHandlers={educationSectionFormEventHandlers}
           experienceSectionFormEventHandlers={experienceSectionFormEventHandlers}
+        /> */}
+        <Customize
+          handleLayoutChange = { handleLayoutChange }
         />
       </div>
-      
+
       {/* Render a preview section */}
       <Preview
         personalDetailsFormStates = {personalDetailsFormStates}

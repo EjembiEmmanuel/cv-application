@@ -1,0 +1,190 @@
+.preview {
+    background-color: white;
+    width: 55%;
+    filter: drop-shadow(0 0 0.2em rgb(198, 188, 188));
+}
+
+.preview.topLayout {
+    display: flex;
+    flex-direction: column;
+}
+
+.preview.leftLayout {
+    display: flex;
+}
+
+.preview.rightLayout {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.preview.topLayout .bioData {
+    background-color: #4e0e0e;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.5em;
+
+}
+
+.preview.leftLayout .bioData {
+    background-color: #4e0e0e;
+    color: white;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em 0.5em;
+
+}
+
+.preview.rightLayout .bioData {
+    background-color: #4e0e0e;
+    color: white;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em 0.5em;
+
+}
+
+.preview.topLayout .bioData .heading .fullname h1 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.preview.leftLayout .bioData .heading .fullname h1 {
+    font-size: 1.2em;
+    margin: 0 0 1em 0;
+}
+
+.preview.rightLayout .bioData .heading .fullname h1 {
+    font-size: 1.2em;
+    margin: 0 0 1em 0;
+}
+
+.preview .bioData .details.topLayout {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.preview .bioData .details.leftLayout {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 3em;
+    width: 100%;
+}
+
+.preview .bioData .details.rightLayout {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 3em;
+    width: 100%;
+}
+
+.preview.topLayout .bioData .details .email,
+.preview.topLayout .bioData .details .phoneNumber,
+.preview.topLayout .bioData .details .address {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+}
+
+.preview.leftLayout .bioData .details .email,
+.preview.leftLayout .bioData .details .phoneNumber,
+.preview.leftLayout .bioData .details .address {
+    display: flex;
+    align-items: center;
+    font-size: 0.6em;
+}
+
+.preview.rightLayout .bioData .details .email,
+.preview.rightLayout .bioData .details .phoneNumber,
+.preview.rightLayout .bioData .details .address {
+    display: flex;
+    align-items: center;
+    font-size: 0.6em;
+}
+
+.preview .bioData .details .email img,
+.preview .bioData .details .phoneNumber img,
+.preview .bioData .details .address img {
+    margin: 0.5em;
+}
+
+.preview.topLayout .resume {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    padding: 4em;
+}
+
+.preview.leftLayout .resume {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+
+.preview.rightLayout .resume {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+
+.preview .resume .education,
+.preview .resume .experience {
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 2em 0;
+}
+
+.preview .resume .education .title,
+.preview .resume .experience .title {
+    background-color: #eef0f4;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: center;
+    padding: 0.4em;
+}
+
+.preview .resume .education .details,
+.preview .resume .experience .details {
+    display: flex;
+    padding: 1em 0;
+}
+
+.preview .resume .education .details .right,
+.preview .resume .experience .details .right {
+    margin-left: 1.5em;
+}
+
+.preview .resume .education .details .left .date,
+.preview .resume .experience .details .left .date {
+    font-size: 1em;
+    margin: 0;
+}
+
+.preview .resume .education .details .left .location,
+.preview .resume .experience .details .left .location {
+    font-size: 1em;
+    margin: 0;
+}
+
+.preview .resume .education .details .right .primary,
+.preview .resume .experience .details .right .primary {
+    font-weight: bold;
+    font-size: 1em;
+    margin: 0;
+}
+
+.preview .resume .education .details .right .secondary,
+.preview .resume .experience .details .right .secondary {
+    font-size: 0.8em;
+    font-size: 1em;
+    margin: 0
+}
