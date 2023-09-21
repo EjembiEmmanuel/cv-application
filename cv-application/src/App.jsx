@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { hexToRgb, calculateBrightness } from './utils/utils';
 import { sample } from "../sample";
 import Sidebar from './components/Sidebar'
 import Content from './components/Content'
@@ -8,6 +9,9 @@ import deleteIcon from "./assets/delete-red.svg"
 import './App.css'
 
 function App() {
+  // State variables for component visibility and active state
+  const [activeComponentIndex, setActiveComponentIndex] = useState(0)
+
   // State variables for personal details form fields
   const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
@@ -44,6 +48,15 @@ function App() {
 
   const [layout, setLayout] = useState("topLayout")
 
+  const [accentColor, setAccentColor] = useState("#4e0e0e")
+  const [mainColor, setMainColor] = useState("#eef0f4")
+  const [textColor, setTextColor] = useState("#ffffff")
+
+  // Event handler for toggling active components
+  const handleActiveComponentChange = (index) => {
+    setActiveComponentIndex(index)
+  }
+
   // Event handlers for personal details form fields
   const handleFullnameChange = (event) => {
     const newFullname = event.target.value;
@@ -54,7 +67,7 @@ function App() {
     const newEmail = event.target.value;
     setEmail(newEmail);
   }
-
+ 
   const handlePhoneNumberChange = (event) => {
     const newPhoneNumber = event.target.value;
     setPhoneNumber(newPhoneNumber);
@@ -117,9 +130,26 @@ function App() {
     setCompanyLocation(newCompanyLocation);
   }
 
+  // Event handler for layout change
   const handleLayoutChange = (layout) => {
     const newLayout = layout
     setLayout(newLayout)
+  }
+
+  // Event handler for accent color change
+  const handleAccentColorChange = (event) => {
+    const newAccentColor = hexToRgb(event.target.value)
+    setAccentColor(newAccentColor)
+
+    const brightness = calculateBrightness(newAccentColor)
+
+    if (brightness < 128) {
+      setMainColor("#eef0f4")
+      setTextColor("#ffffff")
+    } else {
+      setMainColor("#000000")
+      setTextColor("#000000")
+    }
   }
 
   // Define state objects for easier passing as props
@@ -208,6 +238,12 @@ function App() {
     handleCompanyLocationChange,
   }
 
+  const theme = {
+    accentColor,
+    mainColor,
+    textColor
+  }
+
   // Function to load sample data into the form
   const loadSample = () => {
     // Set personal details from a sample object
@@ -270,7 +306,10 @@ function App() {
   return (
     <>
       {/* Render the sidebar */}
-      <Sidebar />
+      <Sidebar
+        activeComponentIndex = { activeComponentIndex }
+        handleActiveComponentChange = { handleActiveComponentChange }
+      />
 
       <div className="main">
         <div className="header">
@@ -285,21 +324,33 @@ function App() {
           </button>
         </div>
 
-        {/* Render the main content with props */}
-        {/* <Content 
-          personalDetailsFormStates={personalDetailsFormStates}
-          personalDetailsFormEventHandlers={personalDetailsFormEventHandlers}
-          sectionStates={sectionStates}
-          educationSectionStates={educationSectionStates}
-          experienceSectionStates={experienceSectionStates}
-          educationSectionFormStates={educationSectionFormStates}
-          experienceSectionFormStates={experienceSectionFormStates}
-          educationSectionFormEventHandlers={educationSectionFormEventHandlers}
-          experienceSectionFormEventHandlers={experienceSectionFormEventHandlers}
-        /> */}
-        <Customize
-          handleLayoutChange = { handleLayoutChange }
-        />
+        {activeComponentIndex === 0 && (
+          <>
+            {/* Render the main content with props */}
+            <Content
+              personalDetailsFormStates={personalDetailsFormStates}
+              personalDetailsFormEventHandlers={personalDetailsFormEventHandlers}
+              sectionStates={sectionStates}
+              educationSectionStates={educationSectionStates}
+              experienceSectionStates={experienceSectionStates}
+              educationSectionFormStates={educationSectionFormStates}
+              experienceSectionFormStates={experienceSectionFormStates}
+              educationSectionFormEventHandlers={educationSectionFormEventHandlers}
+              experienceSectionFormEventHandlers={experienceSectionFormEventHandlers}
+            />
+          </>
+        )}
+
+        {activeComponentIndex === 1 && (
+          <>
+            <Customize
+              isActive = { activeComponentIndex === 1 }
+              handleLayoutChange = { handleLayoutChange }
+              handleAccentColorChange = { handleAccentColorChange }
+              theme = { theme }
+            />
+          </>
+        )}
       </div>
 
       {/* Render a preview section */}
@@ -308,6 +359,7 @@ function App() {
         educationSectionStates = {educationSectionStates}
         experienceSectionStates = {experienceSectionStates}
         layout = {layout}
+        theme = { theme }
       />
     </>
   )

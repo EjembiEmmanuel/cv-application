@@ -4,18 +4,10 @@
     filter: drop-shadow(0 0 0.2em rgb(198, 188, 188));
 }
 
+/* Top layout */
 .preview.topLayout {
     display: flex;
     flex-direction: column;
-}
-
-.preview.leftLayout {
-    display: flex;
-}
-
-.preview.rightLayout {
-    display: flex;
-    flex-direction: row-reverse;
 }
 
 .preview.topLayout .bioData {
@@ -26,6 +18,39 @@
     align-items: center;
     padding: 2.5em;
 
+}
+
+.preview.topLayout .bioData .heading .fullname h1 {
+    font-size: 2em;
+    margin: 0;
+}
+
+.preview .bioData .details.topLayout {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.preview.topLayout .bioData .details .email,
+.preview.topLayout .bioData .details .phoneNumber,
+.preview.topLayout .bioData .details .address {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+}
+
+.preview.topLayout .resume {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    padding: 4em;
+}
+/* Top layout */
+
+
+/* Left layout */
+.preview.leftLayout {
+    display: flex;
 }
 
 .preview.leftLayout .bioData {
@@ -39,6 +64,41 @@
 
 }
 
+.preview.leftLayout .bioData .heading .fullname h1 {
+    font-size: 1.2em;
+    margin: 0 0 1em 0;
+}
+
+.preview .bioData .details.leftLayout {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 3em;
+    width: 100%;
+}
+
+.preview.leftLayout .bioData .details .email,
+.preview.leftLayout .bioData .details .phoneNumber,
+.preview.leftLayout .bioData .details .address {
+    display: flex;
+    align-items: center;
+    font-size: 0.6em;
+}
+
+.preview.leftLayout .resume {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+}
+/* Left layout */
+
+
+/* Right layout */
+.preview.rightLayout {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 .preview.rightLayout .bioData {
     background-color: #4e0e0e;
     color: white;
@@ -50,32 +110,9 @@
 
 }
 
-.preview.topLayout .bioData .heading .fullname h1 {
-    font-size: 1.5em;
-    margin: 0;
-}
-
-.preview.leftLayout .bioData .heading .fullname h1 {
-    font-size: 1.2em;
-    margin: 0 0 1em 0;
-}
-
 .preview.rightLayout .bioData .heading .fullname h1 {
     font-size: 1.2em;
     margin: 0 0 1em 0;
-}
-
-.preview .bioData .details.topLayout {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-}
-
-.preview .bioData .details.leftLayout {
-    display: flex;
-    flex-direction: column;
-    padding: 0 0 0 3em;
-    width: 100%;
 }
 
 .preview .bioData .details.rightLayout {
@@ -83,22 +120,6 @@
     flex-direction: column;
     padding: 0 0 0 3em;
     width: 100%;
-}
-
-.preview.topLayout .bioData .details .email,
-.preview.topLayout .bioData .details .phoneNumber,
-.preview.topLayout .bioData .details .address {
-    display: flex;
-    align-items: center;
-    font-size: 1em;
-}
-
-.preview.leftLayout .bioData .details .email,
-.preview.leftLayout .bioData .details .phoneNumber,
-.preview.leftLayout .bioData .details .address {
-    display: flex;
-    align-items: center;
-    font-size: 0.6em;
 }
 
 .preview.rightLayout .bioData .details .email,
@@ -109,31 +130,20 @@
     font-size: 0.6em;
 }
 
-.preview .bioData .details .email img,
-.preview .bioData .details .phoneNumber img,
-.preview .bioData .details .address img {
-    margin: 0.5em;
-}
-
-.preview.topLayout .resume {
-    flex: 3;
-    display: flex;
-    flex-direction: column;
-    padding: 4em;
-}
-
-.preview.leftLayout .resume {
-    width: 65%;
-    display: flex;
-    flex-direction: column;
-    padding: 2em;
-}
-
 .preview.rightLayout .resume {
     width: 65%;
     display: flex;
     flex-direction: column;
     padding: 2em;
+}
+/* Right layout */
+
+.preview .bioData .details .email svg,
+.preview .bioData .details .phoneNumber svg,
+.preview .bioData .details .address svg {
+    width: 1em;
+    height: 1em;
+    margin: 0.5em;
 }
 
 .preview .resume .education,

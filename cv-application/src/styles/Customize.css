@@ -10,6 +10,7 @@
 }
 
 .customize .layout .title {
+    font-size: 1.5em;
     font-weight: bold;
     margin: 0 0 1em 0;
 }
@@ -44,34 +45,14 @@
 .customize .layout .layoutToggle .top::before {
     content: "";
     position: absolute;
-    bottom: 50%;
+    top: 50%;
     right: 0%;
-    width: 50%;
+    width: 100%;
     height: 100%;
-    background-color: black;
+    background-color: white;
 }
   
-.customize .layout .layoutToggle .top::after {
-    content: "";
-    position: absolute;
-    bottom: 50%;
-    right: 50%;
-    width: 50%;
-    height: 100%;
-    background-color: black;
-}
-
 .customize .layout .layoutToggle .left::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background-color: black;
-}
-  
-.customize .layout .layoutToggle .left::after {
     content: "";
     position: absolute;
     top: 0;
@@ -90,13 +71,51 @@
     height: 100%;
     background-color: white;
 }
-  
-.customize .layout .layoutToggle .right::after {
-    content: "";
+
+.customize .colorContainer {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1.5em 1em;
+    margin: 0 0 1.5em 0;
+    filter: drop-shadow(0 0 0.2em rgb(198, 188, 188));
+    border-radius: 20px;
+}
+
+.customize .colorContainer .title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0 0 1em 0;
+}
+
+.customize .colorContainer .color {
+    display: flex;
+    align-items: center;
+}
+
+.customize .colorContainer .color .accentColor {
+    font-size: 1.1em;
+    margin: 0 1em 0 0;
+}
+
+.customize .colorContainer .color .colorPicker {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.customize .colorContainer .color .colorPicker #colorPickerInput {
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    margin: 0;
     position: absolute;
     top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    background-color: black;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
 }
