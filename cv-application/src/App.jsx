@@ -52,6 +52,8 @@ function App() {
   const [mainColor, setMainColor] = useState("#eef0f4")
   const [textColor, setTextColor] = useState("#ffffff")
 
+  const [font, setFont] = useState("Roboto")
+
   // Event handler for toggling active components
   const handleActiveComponentChange = (index) => {
     setActiveComponentIndex(index)
@@ -150,6 +152,11 @@ function App() {
       setMainColor("#000000")
       setTextColor("#000000")
     }
+  }
+
+  const handleFontChange = (font) => {
+    const newFont = font
+    setFont(newFont)
   }
 
   // Define state objects for easier passing as props
@@ -344,10 +351,11 @@ function App() {
         {activeComponentIndex === 1 && (
           <>
             <Customize
-              isActive = { activeComponentIndex === 1 }
               handleLayoutChange = { handleLayoutChange }
               handleAccentColorChange = { handleAccentColorChange }
               theme = { theme }
+              font = { font }
+              handleFontChange = { handleFontChange }
             />
           </>
         )}
@@ -360,6 +368,7 @@ function App() {
         experienceSectionStates = {experienceSectionStates}
         layout = {layout}
         theme = { theme }
+        font = { font }
       />
     </>
   )

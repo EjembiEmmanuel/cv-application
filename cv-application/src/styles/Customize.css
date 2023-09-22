@@ -17,6 +17,7 @@
 
 .customize .layout .layoutToggles {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .customize .layout .layoutToggle {
@@ -118,4 +119,44 @@
     left: 0;
     opacity: 0;
     cursor: pointer;
+}
+
+.customize .fontContainer {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 1.5em 1em;
+    margin: 0 0 1.5em 0;
+    filter: drop-shadow(0 0 0.2em rgb(198, 188, 188));
+    border-radius: 20px;
+}
+
+.customize .fontContainer .title {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0 0 1em 0;
+}
+
+.customize .fontContainer .fontPicker {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.customize .fontContainer .fontPicker .font {
+    background-color: white;
+    color: black;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 1em;
+    margin: 0 1em 1em 0;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid black;
+}
+
+.customize .fontContainer .fontPicker .font.active {
+    background-color: black;
+    color: white;
 }
