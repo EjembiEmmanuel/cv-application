@@ -27,6 +27,7 @@
 
 .preview .bioData .details.topLayout {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
     width: 100%;
 }
@@ -72,7 +73,6 @@
 .preview .bioData .details.leftLayout {
     display: flex;
     flex-direction: column;
-    padding: 0 0 0 3em;
     width: 100%;
 }
 
@@ -118,7 +118,6 @@
 .preview .bioData .details.rightLayout {
     display: flex;
     flex-direction: column;
-    padding: 0 0 0 3em;
     width: 100%;
 }
 
