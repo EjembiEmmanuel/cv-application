@@ -1,0 +1,33 @@
+@media only screen and (min-width: 820px) {
+    .mobileControls {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 820px) {
+    .mobileControls {
+        position: fixed;
+        display: flex;
+        flex-direction: column;
+        bottom: 5%;
+        right: 0;
+    }
+
+    .mobileControls .mobileBtn {
+        background-color: white;
+        padding:  1em;
+        margin: 0.3em 1em;
+        border: none;
+        border-radius: 50%;
+        filter: drop-shadow(0 0 0.2em rgb(198, 188, 188));
+
+    }
+
+    .mobileControls button svg {
+        fill: rgb(0, 136, 255);
+        width: 1.5em;
+        height: 1.5em;
+    }
+
+    
+}

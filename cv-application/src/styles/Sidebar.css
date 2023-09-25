@@ -2,7 +2,6 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    /* width: 6%; */
     height: fit-content;
     padding: 1em;
     margin: 0 2em 0 0;
@@ -32,4 +31,17 @@
     width: 2em;
     height: 2em;
     margin: 0 0 0.5em 0;
+}
+
+@media only screen and (max-width: 820px) {
+    .sidebar {
+        display: none;
+        background-color: white;
+        flex-direction: column;
+        height: fit-content;
+        padding: 1em;
+        margin: 0 2em 0 0;
+        filter: drop-shadow(0 0 0.2em rgb(198, 188, 188));
+        border-radius: 20px;
+    }
 }

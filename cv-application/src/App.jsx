@@ -5,6 +5,7 @@ import Sidebar from './components/Sidebar'
 import Content from './components/Content'
 import Customize from './components/Customize';
 import Preview from './components/Preview'
+import MobileControls from './components/MobileControls';
 import deleteIcon from "./assets/delete-red.svg"
 import './App.css'
 
@@ -53,6 +54,12 @@ function App() {
   const [textColor, setTextColor] = useState("#ffffff")
 
   const [font, setFont] = useState("Roboto")
+
+  const [isPreviewVisible, setIsPreviewVisible] = useState(false)
+
+  const togglePreviewVisibility = () => {
+    setIsPreviewVisible(!isPreviewVisible);
+  };
 
   // Event handler for toggling active components
   const handleActiveComponentChange = (index) => {
@@ -158,6 +165,7 @@ function App() {
     const newFont = font
     setFont(newFont)
   }
+
 
   // Define state objects for easier passing as props
   const sectionStates = {
@@ -369,7 +377,15 @@ function App() {
         layout = {layout}
         theme = { theme }
         font = { font }
+        isPreviewVisible = { isPreviewVisible }
       />
+
+      <MobileControls
+        handleActiveComponentChange = {handleActiveComponentChange}
+        togglePreviewVisibility = { togglePreviewVisibility }
+      />
+
+
     </>
   )
 }

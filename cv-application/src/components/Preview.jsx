@@ -19,11 +19,12 @@ export default function Preview({
         mainColor,
         textColor
     },
-    font
+    font,
+    isPreviewVisible
 }) {
 
     return (
-        <div className={"preview" + ' ' + layout} style={{fontFamily: font}}>
+        <>
             <svg xmlns="http://www.w3.org/2000/svg" style={{display: "none"}}>
                 <symbol id="envelope" viewBox="0 0 512 512">
                     <path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/>
@@ -35,86 +36,90 @@ export default function Preview({
                     <path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/>
                 </symbol>
             </svg>
-            
-            <div className="bioData" style={{backgroundColor: accentColor, color: textColor}}>   
-                <div className="heading">
-                    <div className="fullname">
-                        <h1>{fullname}</h1>
+
+            <div className="preview" style={{display: isPreviewVisible ? "block" : ""}}>
+                <div className={"preview" + ' ' + layout} style={{fontFamily: font}}>
+                    <div className="bioData" style={{backgroundColor: accentColor, color: textColor}}>   
+                        <div className="heading">
+                            <div className="fullname">
+                                <h1>{fullname}</h1>
+                            </div>
+                        </div>
+                        <div className={"details" + ' ' + layout}>
+                            <div className="email">
+                                {email.length > 0 && (
+                                    <>
+                                        <svg fill={textColor}>
+                                            <use xlinkHref="#envelope" />
+                                        </svg>
+                                        <p>{email}</p>
+                                    </>
+                                )}
+                            </div>
+                            <div className="phoneNumber">
+                                {phoneNumber.length > 0 && (
+                                    <>
+                                        <svg fill={textColor}>
+                                            <use xlinkHref="#phoneIcon" />
+                                        </svg>
+                                        <p>{phoneNumber}</p>
+                                    </>
+                                )}
+                            </div>
+                            <div className="address">
+                                {address.length > 0 && (
+                                    <>
+                                        <svg fill={textColor}>
+                                            <use xlinkHref="#location" />
+                                        </svg>
+                                        <p>{address}</p>
+                                    </>
+                                )}
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className={"details" + ' ' + layout}>
-                    <div className="email">
-                        {email.length > 0 && (
-                            <>
-                                <svg fill={textColor}>
-                                    <use xlinkHref="#envelope" />
-                                </svg>
-                                <p>{email}</p>
-                            </>
+                    <div className="resume">
+                        {educationItems.length > 0 && (
+                            <div className="education">
+                                <div className="title" style={{backgroundColor: mainColor, color: accentColor}}>Education</div>
+                                {educationItems.map(item => (
+                                    <>
+                                        <div className="details">
+                                            <div className="left">
+                                                <p className="date">{item.startDate} - {item.endDate}</p>
+                                                <p className="location">{item.loc}</p>
+                                            </div>
+                                            <div className="right">
+                                                <p className="primary">{item.primary}</p>
+                                                <p className="secondary">{item.secondary}</p>
+                                            </div>
+                                        </div>
+                                    </>
+                                ))}
+                            </div>
                         )}
-                    </div>
-                    <div className="phoneNumber">
-                        {phoneNumber.length > 0 && (
-                            <>
-                                <svg fill={textColor}>
-                                    <use xlinkHref="#phoneIcon" />
-                                </svg>
-                                <p>{phoneNumber}</p>
-                            </>
-                        )}
-                    </div>
-                    <div className="address">
-                        {address.length > 0 && (
-                            <>
-                                <svg fill={textColor}>
-                                    <use xlinkHref="#location" />
-                                </svg>
-                                <p>{address}</p>
-                            </>
+                        {experienceItems.length > 0 && (
+                            <div className="experience">
+                                <div className="title" style={{backgroundColor: mainColor, color: accentColor}}>Professional Experience</div>
+                                {experienceItems.map(item => (
+                                    <>
+                                        <div className="details">
+                                            <div className="left">
+                                                <p className="date">{item.startDate} - {item.endDate}</p>
+                                                <p className="location">{item.loc}</p>
+                                            </div>
+                                            <div className="right">
+                                                <p className="primary">{item.primary}</p>
+                                                <p className="secondary">{item.secondary}</p>
+                                            </div>
+                                        </div>
+                                    </>
+                                ))}
+                            </div>
                         )}
                     </div>
                 </div>
             </div>
-            <div className="resume">
-                {educationItems.length > 0 && (
-                    <div className="education">
-                        <div className="title" style={{backgroundColor: mainColor, color: accentColor}}>Education</div>
-                        {educationItems.map(item => (
-                            <>
-                                <div className="details">
-                                    <div className="left">
-                                        <p className="date">{item.startDate} - {item.endDate}</p>
-                                        <p className="location">{item.loc}</p>
-                                    </div>
-                                    <div className="right">
-                                        <p className="primary">{item.primary}</p>
-                                        <p className="secondary">{item.secondary}</p>
-                                    </div>
-                                </div>
-                            </>
-                        ))}
-                    </div>
-                )}
-                {experienceItems.length > 0 && (
-                    <div className="experience">
-                        <div className="title" style={{backgroundColor: mainColor, color: accentColor}}>Professional Experience</div>
-                        {experienceItems.map(item => (
-                            <>
-                                <div className="details">
-                                    <div className="left">
-                                        <p className="date">{item.startDate} - {item.endDate}</p>
-                                        <p className="location">{item.loc}</p>
-                                    </div>
-                                    <div className="right">
-                                        <p className="primary">{item.primary}</p>
-                                        <p className="secondary">{item.secondary}</p>
-                                    </div>
-                                </div>
-                            </>
-                        ))}
-                    </div>
-                )}
-            </div>
-        </div>
+        </>
     )
 }

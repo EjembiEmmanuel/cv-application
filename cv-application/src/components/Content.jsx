@@ -380,7 +380,7 @@ function Section({
 
   return (
     <div className="section">
-      <div className="sectionHeader">
+      <div onClick={onShow} className="sectionHeader">
         <div className="info">
           {/* Display the main icon and section title */}
           <img className="mainIcon" src={mainIcon} alt={text + ' ' + 'icon'} />
