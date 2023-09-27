@@ -9,6 +9,9 @@ import MobileControls from './components/MobileControls';
 import deleteIcon from "./assets/delete-red.svg"
 import './App.css'
 
+import JsPDF from 'jspdf';
+import html2canvas from "html2canvas";
+
 function App() {
   // State variables for component visibility and active state
   const [activeComponentIndex, setActiveComponentIndex] = useState(0)
@@ -47,16 +50,19 @@ function App() {
   const [experienceItemEdit, setExperienceItemEdit] = useState(false);
   const [experienceItemEditIndex, setExperienceItemEditIndex] = useState(null);
 
+  // State variable for preview layout
   const [layout, setLayout] = useState("topLayout")
 
+  // State variables for theme
   const [accentColor, setAccentColor] = useState("#4e0e0e")
   const [mainColor, setMainColor] = useState("#eef0f4")
   const [textColor, setTextColor] = useState("#ffffff")
-
   const [font, setFont] = useState("Roboto")
 
+  // State variable for preview visibility on mobile devices
   const [isPreviewVisible, setIsPreviewVisible] = useState(false)
 
+  // Event handler for toggling preview visibility on mobile devices
   const togglePreviewVisibility = () => {
     setIsPreviewVisible(!isPreviewVisible);
   };
@@ -161,11 +167,11 @@ function App() {
     }
   }
 
+  // Event handler for font change
   const handleFontChange = (font) => {
     const newFont = font
     setFont(newFont)
   }
-
 
   // Define state objects for easier passing as props
   const sectionStates = {
@@ -318,12 +324,27 @@ function App() {
     setExperienceItems(newExperienceItems);
   };
 
+  // Function to generate PDF
+  const generatePDF = () => {
+    html2canvas(document.querySelector("#preview")).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new JsPDF({
+        orientation: "portrait",
+        unit: "pt",
+        format: "a4"
+      });
+      pdf.addImage(imgData, "JPEG", 0, 0, 600, 500);
+      pdf.save("resume.pdf");
+    });
+  };
+    
   return (
     <>
       {/* Render the sidebar */}
       <Sidebar
         activeComponentIndex = { activeComponentIndex }
         handleActiveComponentChange = { handleActiveComponentChange }
+        generatePDF = { generatePDF }
       />
 
       <div className="main">
@@ -380,9 +401,11 @@ function App() {
         isPreviewVisible = { isPreviewVisible }
       />
 
+      {/* Render a mobile controls */}
       <MobileControls
         handleActiveComponentChange = {handleActiveComponentChange}
         togglePreviewVisibility = { togglePreviewVisibility }
+        generatePDF = { generatePDF }
       />
 
 

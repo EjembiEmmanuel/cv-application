@@ -20,7 +20,7 @@ export default function Preview({
         textColor
     },
     font,
-    isPreviewVisible
+    isPreviewVisible,
 }) {
 
     return (
@@ -38,7 +38,7 @@ export default function Preview({
             </svg>
 
             <div className="preview" style={{display: isPreviewVisible ? "block" : ""}}>
-                <div className={"preview" + ' ' + layout} style={{fontFamily: font}}>
+                <div id="preview" className={"preview" + ' ' + layout} style={{fontFamily: font}}>
                     <div className="bioData" style={{backgroundColor: accentColor, color: textColor}}>   
                         <div className="heading">
                             <div className="fullname">

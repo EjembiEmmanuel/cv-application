@@ -1,6 +1,6 @@
 import "../styles/MobileControls.css"
 
-export default function MobileControls({ handleActiveComponentChange, togglePreviewVisibility }) {
+export default function MobileControls({ handleActiveComponentChange, togglePreviewVisibility, generatePDF }) {
     return (
         <>
             <svg xmlns="http://www.w3.org/2000/svg" style={{display: "none"}}>
@@ -34,7 +34,7 @@ export default function MobileControls({ handleActiveComponentChange, togglePrev
                         <use xlinkHref="#previewIcon" />
                     </svg>
                 </button>
-                <button className="mobileBtn downloadBtn">
+                <button onClick={generatePDF} className="mobileBtn downloadBtn">
                     <svg>
                         <use xlinkHref="#downloadIcon" />
                     </svg>

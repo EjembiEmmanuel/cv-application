@@ -1,6 +1,6 @@
 import "../styles/Sidebar.css";
 
-export default function Sidebar({ activeComponentIndex, handleActiveComponentChange }) {
+export default function Sidebar({ activeComponentIndex, handleActiveComponentChange, generatePDF }) {
   return (
     <>
       <svg xmlns="http://www.w3.org/2000/svg" style={{display: "none"}}>
@@ -33,7 +33,7 @@ export default function Sidebar({ activeComponentIndex, handleActiveComponentCha
         </button>
 
         {/* Button for 'Download' with an icon */}
-        <button className="sidebarBtn">
+        <button onClick={generatePDF} className="sidebarBtn">
           <svg className="logo" xmlns="http://www.w3.org/2000/svg">
             <use xlinkHref="#downloadIcon" />
           </svg>
