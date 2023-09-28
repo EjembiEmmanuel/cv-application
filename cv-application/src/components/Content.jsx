@@ -126,30 +126,97 @@ export default function Content({
         label: "Location",
         placeholder: "Enter Location"
     }
-}
+  }
 
-const experienceFormFields = {
-    primary: {
-    label: "Company Name",
-    placeholder: "Enter Company Name"
+  const experienceFormFields = {
+      primary: {
+      label: "Company Name",
+      placeholder: "Enter Company Name"
+      },
+      secondary: {
+          label: "Job Title",
+          placeholder: "Enter Job Title"
+      },
+      startDate: {
+          label: "Start Date",
+          placeholder: "Enter Start Date"
+      },
+      endDate: {
+          label: "End Date",
+          placeholder: "Enter End Date"
+      },
+      location: {
+          label: "Location",
+          placeholder: "Enter Location"
+      }
+  }
+
+  const sections = [
+    {
+      text: "Education",
+      mainIcon: educationIcon,
+      addIcon: addIcon,
+      isSectionActive: isSectionActiveIndex === 0,
+      isSectionFormActive: sectionFormActiveIndex === 0,
+      formFields: educationFormFields,
+      onShow: () => toggleSection(0),
+      onShowSectionForm: () => showForm(0),
+      onHideSectionForm: () => hideForm(),
+      items: educationItems,
+      setItems: setEducationItems,
+      itemEdit: educationItemEdit,
+      setItemEdit: setEducationItemEdit,
+      itemEditIndex: educationItemEditIndex,
+      setItemEditIndex: setEducationItemEditIndex,
+      primary: school,
+      setPrimary: setSchool,
+      secondary: degree,
+      setSecondary: setDegree,
+      startDate: schoolStartDate,
+      setStartDate: setSchoolStartDate,
+      endDate: schoolEndDate,
+      setEndDate: setSchoolEndDate,
+      loc: schoolLocation,
+      setLoc: setSchoolLocation,
+      handlePrimary: handleSchoolChange,
+      handleSecondary: handleDegreeChange,
+      handleStartDate: handleSchoolStartDateChange,
+      handleEndDate: handleSchoolEndDateChange,
+      handleLocation: handleSchoolLocationChange,
     },
-    secondary: {
-        label: "Job Title",
-        placeholder: "Enter Job Title"
-    },
-    startDate: {
-        label: "Start Date",
-        placeholder: "Enter Start Date"
-    },
-    endDate: {
-        label: "End Date",
-        placeholder: "Enter End Date"
-    },
-    location: {
-        label: "Location",
-        placeholder: "Enter Location"
+    {
+      text: "Professional Experience",
+      mainIcon: experienceIcon,
+      addIcon: addIcon,
+      isSectionActive: isSectionActiveIndex === 1,
+      isSectionFormActive: sectionFormActiveIndex === 1,
+      formFields: experienceFormFields,
+      onShow: () => toggleSection(1),
+      onShowSectionForm: () => showForm(1),
+      onHideSectionForm: () => hideForm(),
+      items: experienceItems,
+      setItems: setExperienceItems,
+      itemEdit: experienceItemEdit,
+      setItemEdit: setExperienceItemEdit,
+      itemEditIndex: experienceItemEditIndex,
+      setItemEditIndex: setExperienceItemEditIndex,
+      primary: company,
+      setPrimary: setCompany,
+      secondary: jobTitle,
+      setSecondary: setJobTitle,
+      startDate: companyStartDate,
+      setStartDate: setCompanyStartDate,
+      endDate: companyEndDate,
+      setEndDate: setCompanyEndDate,
+      loc: companyLocation,
+      setLoc: setCompanyLocation,
+      handlePrimary: handleCompanyChange,
+      handleSecondary: handleJobTitleChange,
+      handleStartDate: handleCompanyStartDateChange,
+      handleEndDate: handleCompanyEndDateChange,
+      handleLocation: handleCompanyLocationChange,
     }
-}
+  ]
 
   return (
     <div className="content">
@@ -165,73 +232,43 @@ const experienceFormFields = {
         handleAddressChange = { handleAddressChange }
       />
 
-      {/* Render the education section */}
-      <Section
-        items = { educationItems }
-        setItems = { setEducationItems }
-        itemEdit = { educationItemEdit }
-        setItemEdit = { setEducationItemEdit }
-        itemEditIndex = { educationItemEditIndex }
-        setItemEditIndex = { setEducationItemEditIndex }
-        primary = { school  }
-        setPrimary = { setSchool }
-        secondary = {degree}
-        setSecondary = { setDegree }
-        startDate = { schoolStartDate }
-        setStartDate = { setSchoolStartDate }
-        endDate = {schoolEndDate}
-        setEndDate = {setSchoolEndDate}
-        loc = { schoolLocation }
-        setLoc = { setSchoolLocation }
-        handlePrimary = { handleSchoolChange }
-        handleSecondary = { handleDegreeChange }
-        handleStartDate = { handleSchoolStartDateChange }
-        handleEndDate = { handleSchoolEndDateChange }
-        handleLocation = { handleSchoolLocationChange }
-        mainIcon = { educationIcon }
-        text = "Education"
-        addIcon = { addIcon }
-        isSectionActive = { isSectionActiveIndex === 0 }
-        onShow = { () => toggleSection(0) }
-        formFields={ educationFormFields }
-        isSectionFormActive = { sectionFormActiveIndex === 0 }
-        onShowSectionForm = { () => showForm(0) }
-        onHideSectionForm = { () => hideForm() }
-      />
-
       {/* Render the experience section */}
-      <Section
-        items = { experienceItems }
-        setItems = { setExperienceItems }
-        itemEdit = { experienceItemEdit }
-        setItemEdit = { setExperienceItemEdit }
-        itemEditIndex = { experienceItemEditIndex }
-        setItemEditIndex = { setExperienceItemEditIndex }
-        primary = { company }
-        setPrimary = { setCompany }
-        secondary = { jobTitle }
-        setSecondary = { setJobTitle }
-        startDate = { companyStartDate }
-        setStartDate = { setCompanyStartDate }
-        endDate = { companyEndDate }
-        setEndDate = { setCompanyEndDate }
-        loc = { companyLocation }
-        setLoc = { setCompanyLocation }
-        handlePrimary = { handleCompanyChange }
-        handleSecondary = { handleJobTitleChange }
-        handleStartDate = { handleCompanyStartDateChange }
-        handleEndDate = { handleCompanyEndDateChange }
-        handleLocation = { handleCompanyLocationChange }
-        mainIcon = { experienceIcon }
-        text = "Professional Experience"
-        addIcon = { addIcon }
-        isSectionActive = { isSectionActiveIndex === 1 }
-        onShow = { () => toggleSection(1) }
-        formFields = { experienceFormFields }
-        isSectionFormActive = { sectionFormActiveIndex === 1 }
-        onShowSectionForm = { () => showForm(1) }
-        onHideSectionForm = { () => hideForm() }
-      />
+      {sections.map(section => (
+        <>
+          <Section
+          text = { section.text }
+          mainIcon = { section.mainIcon }
+          addIcon = { section.addIcon }
+          isSectionActive = { section.isSectionActive }
+          isSectionFormActive = { section.isSectionFormActive }
+          formFields = { section.formFields }
+          onShow = { section.onShow }
+          onShowSectionForm = { section.onShowSectionForm }
+          onHideSectionForm = { section.onHideSectionForm }
+          items = { section.items }
+          setItems = { section.setItems }
+          itemEdit = { section.itemEdit }
+          setItemEdit = { section.setItemEdit }
+          itemEditIndex = { section.itemEditIndex }
+          setItemEditIndex = { section.setItemEditIndex }
+          primary = { section.primary }
+          setPrimary = { section.setPrimary }
+          secondary = { section.secondary }
+          setSecondary = { section.setSecondary }
+          startDate = { section.startDate }
+          setStartDate = { section.setStartDate }
+          endDate = { section.endDate }
+          setEndDate = { section.setEndDate }
+          loc = { section.loc }
+          setLoc = { section.setLoc }
+          handlePrimary = { section.handlePrimary }
+          handleSecondary = { section.handleSecondary }
+          handleStartDate = { section.handleStartDate }
+          handleEndDate = { section.handleEndDate }
+          handleLocation = { section.handleLocation }
+        />
+        </>
+      ))}
     </div>
   );
 }
@@ -275,6 +312,15 @@ function PersonalDetails({
 }
 
 function Section({
+  text,
+  mainIcon,
+  addIcon,
+  isSectionActive,
+  isSectionFormActive,
+  formFields,
+  onShow,
+  onShowSectionForm,
+  onHideSectionForm,
   items,
   setItems,
   itemEdit,
@@ -296,15 +342,6 @@ function Section({
   handleStartDate,
   handleEndDate,
   handleLocation,
-  mainIcon,
-  text,
-  addIcon,
-  isSectionActive,
-  onShow,
-  formFields,
-  isSectionFormActive,
-  onShowSectionForm,
-  onHideSectionForm
 }) {
   // Function to reset input fields in the section form
   const resetInputs = () => {
