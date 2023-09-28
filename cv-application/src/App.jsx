@@ -4,13 +4,10 @@ import { sample } from "../sample";
 import Sidebar from './components/Sidebar'
 import Content from './components/Content'
 import Customize from './components/Customize';
-import Preview from './components/Preview'
+import PDFDocument from './components/PDFDocument';
 import MobileControls from './components/MobileControls';
 import deleteIcon from "./assets/delete-red.svg"
 import './App.css'
-
-import JsPDF from 'jspdf';
-import html2canvas from "html2canvas";
 
 function App() {
   // State variables for component visibility and active state
@@ -54,9 +51,9 @@ function App() {
   const [layout, setLayout] = useState("topLayout")
 
   // State variables for theme
-  const [accentColor, setAccentColor] = useState("#4e0e0e")
-  const [mainColor, setMainColor] = useState("#eef0f4")
-  const [textColor, setTextColor] = useState("#ffffff")
+  const [accentColor, setAccentColor] = useState("#d9c4c4")
+  const [mainColor, setMainColor] = useState("#000000")
+  const [textColor, setTextColor] = useState("#000000")
   const [font, setFont] = useState("Roboto")
 
   // State variable for preview visibility on mobile devices
@@ -323,20 +320,6 @@ function App() {
     setEducationItems(newEducationItems);
     setExperienceItems(newExperienceItems);
   };
-
-  // Function to generate PDF
-  const generatePDF = () => {
-    html2canvas(document.querySelector("#preview")).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new JsPDF({
-        orientation: "portrait",
-        unit: "pt",
-        format: "a4"
-      });
-      pdf.addImage(imgData, "JPEG", 0, 0, 600, 500);
-      pdf.save("resume.pdf");
-    });
-  };
     
   return (
     <>
@@ -344,7 +327,12 @@ function App() {
       <Sidebar
         activeComponentIndex = { activeComponentIndex }
         handleActiveComponentChange = { handleActiveComponentChange }
-        generatePDF = { generatePDF }
+        personalDetailsFormStates = {personalDetailsFormStates}
+        educationSectionStates = {educationSectionStates}
+        experienceSectionStates = {experienceSectionStates}
+        layout = {layout}
+        theme = { theme }
+        font = { font }
       />
 
       <div className="main">
@@ -390,25 +378,29 @@ function App() {
         )}
       </div>
 
-      {/* Render a preview section */}
-      <Preview
+      {/* Render a pdf */}
+      <div className="pdf" style={{display: isPreviewVisible ? "block" : ""}}>
+          <PDFDocument
+            personalDetailsFormStates = {personalDetailsFormStates}
+            educationSectionStates = {educationSectionStates}
+            experienceSectionStates = {experienceSectionStates}
+            layout = {layout}
+            theme = { theme }
+            font = { font }
+          />
+      </div>
+
+      {/* Render a mobile controls */}
+      <MobileControls
+        handleActiveComponentChange = {handleActiveComponentChange}
+        togglePreviewVisibility = { togglePreviewVisibility }
         personalDetailsFormStates = {personalDetailsFormStates}
         educationSectionStates = {educationSectionStates}
         experienceSectionStates = {experienceSectionStates}
         layout = {layout}
         theme = { theme }
         font = { font }
-        isPreviewVisible = { isPreviewVisible }
       />
-
-      {/* Render a mobile controls */}
-      <MobileControls
-        handleActiveComponentChange = {handleActiveComponentChange}
-        togglePreviewVisibility = { togglePreviewVisibility }
-        generatePDF = { generatePDF }
-      />
-
-
     </>
   )
 }

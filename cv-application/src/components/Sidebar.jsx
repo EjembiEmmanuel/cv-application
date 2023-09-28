@@ -1,6 +1,17 @@
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import PDFDocument from './PDFDocument';
 import "../styles/Sidebar.css";
 
-export default function Sidebar({ activeComponentIndex, handleActiveComponentChange, generatePDF }) {
+export default function Sidebar({
+  activeComponentIndex,
+  handleActiveComponentChange,
+  personalDetailsFormStates,
+  educationSectionStates,
+  experienceSectionStates,
+  layout,
+  theme,
+  font,
+}) {
   return (
     <>
       <svg xmlns="http://www.w3.org/2000/svg" style={{display: "none"}}>
@@ -33,11 +44,24 @@ export default function Sidebar({ activeComponentIndex, handleActiveComponentCha
         </button>
 
         {/* Button for 'Download' with an icon */}
-        <button onClick={generatePDF} className="sidebarBtn">
-          <svg className="logo" xmlns="http://www.w3.org/2000/svg">
-            <use xlinkHref="#downloadIcon" />
-          </svg>
-          Download
+        <button className="sidebarBtn">
+            <svg className="logo" xmlns="http://www.w3.org/2000/svg">
+              <use xlinkHref="#downloadIcon" />
+            </svg>
+            <PDFDownloadLink 
+              style={{textDecoration: 'none', color: 'black'}}
+              document={
+                <PDFDocument
+                  personalDetailsFormStates = {personalDetailsFormStates}
+                  educationSectionStates = {educationSectionStates}
+                  experienceSectionStates = {experienceSectionStates}
+                  layout = {layout}
+                  theme = { theme }
+                  font = { font }
+                />} 
+              fileName="resume.pdf">
+              Download
+            </PDFDownloadLink>
         </button>
       </div>
     </>

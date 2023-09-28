@@ -1,6 +1,17 @@
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import PDFDocument from './PDFDocument';
 import "../styles/MobileControls.css"
 
-export default function MobileControls({ handleActiveComponentChange, togglePreviewVisibility, generatePDF }) {
+export default function MobileControls({
+    handleActiveComponentChange,
+    togglePreviewVisibility,
+    personalDetailsFormStates,
+    educationSectionStates,
+    experienceSectionStates,
+    layout,
+    theme,
+    font,
+    }) {
     return (
         <>
             <svg xmlns="http://www.w3.org/2000/svg" style={{display: "none"}}>
@@ -34,10 +45,23 @@ export default function MobileControls({ handleActiveComponentChange, togglePrev
                         <use xlinkHref="#previewIcon" />
                     </svg>
                 </button>
-                <button onClick={generatePDF} className="mobileBtn downloadBtn">
-                    <svg>
-                        <use xlinkHref="#downloadIcon" />
-                    </svg>
+                <button className="mobileBtn downloadBtn">
+                    <PDFDownloadLink 
+                        style={{textDecoration: 'none', color: 'black'}}
+                        document={
+                            <PDFDocument
+                                personalDetailsFormStates = {personalDetailsFormStates}
+                                educationSectionStates = {educationSectionStates}
+                                experienceSectionStates = {experienceSectionStates}
+                                layout = {layout}
+                                theme = { theme }
+                                font = { font }
+                            />} 
+                            fileName="resume.pdf">
+                                <svg>
+                                    <use xlinkHref="#downloadIcon" />
+                                </svg>
+                    </PDFDownloadLink>
                 </button>
             </div>
         </>
