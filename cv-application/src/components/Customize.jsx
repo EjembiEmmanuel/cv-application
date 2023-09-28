@@ -14,7 +14,7 @@ export default function Customize({
     return (
         <div className="customize">
             <Layout
-                handleLayoutChange= { handleLayoutChange }
+                handleLayoutChange = { handleLayoutChange }
                 accentColor = { accentColor}
             />
             <Color 
@@ -115,13 +115,13 @@ function Font({
                 {fontBtns.map((fontBtn) => (
                     <>
                         <FontButton
-                            isActive={fontBtn.isActive}
-                            text={fontBtn.text}
-                            changeFont={fontBtn.changeFont}
-                            className={fontBtn.className}
-                            fontFamily={fontBtn.fontFamily}
-                            accentColor={accentColor}
-                            textColor={textColor} 
+                            isActive = { fontBtn.isActive }
+                            text = {fontBtn.text }
+                            changeFont = {fontBtn.changeFont }
+                            className = { fontBtn.className }
+                            fontFamily = { fontBtn.fontFamily }
+                            accentColor = { accentColor }
+                            textColor = { textColor } 
                         />
                     </>
                 ))

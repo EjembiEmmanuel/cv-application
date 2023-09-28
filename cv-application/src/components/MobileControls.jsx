@@ -50,10 +50,10 @@ export default function MobileControls({
                         style={{textDecoration: 'none', color: 'black'}}
                         document={
                             <PDFDocument
-                                personalDetailsFormStates = {personalDetailsFormStates}
-                                educationSectionStates = {educationSectionStates}
-                                experienceSectionStates = {experienceSectionStates}
-                                layout = {layout}
+                                personalDetailsFormStates = { personalDetailsFormStates }
+                                educationSectionStates = { educationSectionStates }
+                                experienceSectionStates = { experienceSectionStates }
+                                layout = { layout }
                                 theme = { theme }
                                 font = { font }
                             />} 

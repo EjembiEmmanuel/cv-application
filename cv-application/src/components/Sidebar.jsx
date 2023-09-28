@@ -52,10 +52,10 @@ export default function Sidebar({
               style={{textDecoration: 'none', color: 'black'}}
               document={
                 <PDFDocument
-                  personalDetailsFormStates = {personalDetailsFormStates}
-                  educationSectionStates = {educationSectionStates}
-                  experienceSectionStates = {experienceSectionStates}
-                  layout = {layout}
+                  personalDetailsFormStates = { personalDetailsFormStates }
+                  educationSectionStates = { educationSectionStates }
+                  experienceSectionStates = { experienceSectionStates }
+                  layout = { layout }
                   theme = { theme }
                   font = { font }
                 />} 

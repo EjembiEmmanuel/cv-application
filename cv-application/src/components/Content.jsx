@@ -155,82 +155,82 @@ const experienceFormFields = {
     <div className="content">
       {/* Render the personal details section */}
       <PersonalDetails
-        fullname={fullname}
+        fullname = { fullname }
         email={email}
         phoneNumber={phoneNumber}
         address={address}
         handleFullnameChange={handleFullnameChange}
         handleEmailChange={handleEmailChange}
         handlePhoneNumberChange={handlePhoneNumberChange}
-        handleAddressChange={handleAddressChange}
+        handleAddressChange = { handleAddressChange }
       />
 
       {/* Render the education section */}
       <Section
-        items={educationItems}
-        setItems={setEducationItems}
-        itemEdit={educationItemEdit}
-        setItemEdit={setEducationItemEdit}
-        itemEditIndex={educationItemEditIndex}
-        setItemEditIndex={setEducationItemEditIndex}
-        primary={school}
-        setPrimary={setSchool}
-        secondary={degree}
-        setSecondary={setDegree}
-        startDate={schoolStartDate}
-        setStartDate={setSchoolStartDate}
-        endDate={schoolEndDate}
-        setEndDate={setSchoolEndDate}
-        loc={schoolLocation}
-        setLoc={setSchoolLocation}
-        handlePrimary={handleSchoolChange}
-        handleSecondary={handleDegreeChange}
-        handleStartDate={handleSchoolStartDateChange}
-        handleEndDate={handleSchoolEndDateChange}
-        handleLocation={handleSchoolLocationChange}
-        mainIcon={educationIcon}
-        text="Education"
-        addIcon={addIcon}
-        isSectionActive={isSectionActiveIndex === 0}
-        onShow={() => toggleSection(0)}
-        formFields={educationFormFields}
-        isSectionFormActive={sectionFormActiveIndex === 0}
-        onShowSectionForm={() => showForm(0)}
-        onHideSectionForm={() => hideForm()}
+        items = { educationItems }
+        setItems = { setEducationItems }
+        itemEdit = { educationItemEdit }
+        setItemEdit = { setEducationItemEdit }
+        itemEditIndex = { educationItemEditIndex }
+        setItemEditIndex = { setEducationItemEditIndex }
+        primary = { school  }
+        setPrimary = { setSchool }
+        secondary = {degree}
+        setSecondary = { setDegree }
+        startDate = { schoolStartDate }
+        setStartDate = { setSchoolStartDate }
+        endDate = {schoolEndDate}
+        setEndDate = {setSchoolEndDate}
+        loc = { schoolLocation }
+        setLoc = { setSchoolLocation }
+        handlePrimary = { handleSchoolChange }
+        handleSecondary = { handleDegreeChange }
+        handleStartDate = { handleSchoolStartDateChange }
+        handleEndDate = { handleSchoolEndDateChange }
+        handleLocation = { handleSchoolLocationChange }
+        mainIcon = { educationIcon }
+        text = "Education"
+        addIcon = { addIcon }
+        isSectionActive = { isSectionActiveIndex === 0 }
+        onShow = { () => toggleSection(0) }
+        formFields={ educationFormFields }
+        isSectionFormActive = { sectionFormActiveIndex === 0 }
+        onShowSectionForm = { () => showForm(0) }
+        onHideSectionForm = { () => hideForm() }
       />
 
       {/* Render the experience section */}
       <Section
-        items={experienceItems}
-        setItems={setExperienceItems}
-        itemEdit={experienceItemEdit}
-        setItemEdit={setExperienceItemEdit}
-        itemEditIndex={experienceItemEditIndex}
-        setItemEditIndex={setExperienceItemEditIndex}
-        primary={company}
-        setPrimary={setCompany}
-        secondary={jobTitle}
-        setSecondary={setJobTitle}
-        startDate={companyStartDate}
-        setStartDate={setCompanyStartDate}
-        endDate={companyEndDate}
-        setEndDate={setCompanyEndDate}
-        loc={companyLocation}
-        setLoc={setCompanyLocation}
-        handlePrimary={handleCompanyChange}
-        handleSecondary={handleJobTitleChange}
-        handleStartDate={handleCompanyStartDateChange}
-        handleEndDate={handleCompanyEndDateChange}
-        handleLocation={handleCompanyLocationChange}
-        mainIcon={experienceIcon}
-        text="Professional Experience"
-        addIcon={addIcon}
-        isSectionActive={isSectionActiveIndex === 1}
-        onShow={() => toggleSection(1)}
-        formFields={experienceFormFields}
-        isSectionFormActive={sectionFormActiveIndex === 1}
-        onShowSectionForm={() => showForm(1)}
-        onHideSectionForm={() => hideForm()}
+        items = { experienceItems }
+        setItems = { setExperienceItems }
+        itemEdit = { experienceItemEdit }
+        setItemEdit = { setExperienceItemEdit }
+        itemEditIndex = { experienceItemEditIndex }
+        setItemEditIndex = { setExperienceItemEditIndex }
+        primary = { company }
+        setPrimary = { setCompany }
+        secondary = { jobTitle }
+        setSecondary = { setJobTitle }
+        startDate = { companyStartDate }
+        setStartDate = { setCompanyStartDate }
+        endDate = { companyEndDate }
+        setEndDate = { setCompanyEndDate }
+        loc = { companyLocation }
+        setLoc = { setCompanyLocation }
+        handlePrimary = { handleCompanyChange }
+        handleSecondary = { handleJobTitleChange }
+        handleStartDate = { handleCompanyStartDateChange }
+        handleEndDate = { handleCompanyEndDateChange }
+        handleLocation = { handleCompanyLocationChange }
+        mainIcon = { experienceIcon }
+        text = "Professional Experience"
+        addIcon = { addIcon }
+        isSectionActive = { isSectionActiveIndex === 1 }
+        onShow = { () => toggleSection(1) }
+        formFields = { experienceFormFields }
+        isSectionFormActive = { sectionFormActiveIndex === 1 }
+        onShowSectionForm = { () => showForm(1) }
+        onHideSectionForm = { () => hideForm() }
       />
     </div>
   );
@@ -394,7 +394,7 @@ function Section({
       <div className="sectionBody">
         {/* Display the list of section items if the section is active and not in edit mode */}
         {items.length > 0 && isSectionActive && !isSectionFormActive && (
-          <SectionList items={items} editItem={editItem} />
+          <SectionList items = { items } editItem = { editItem } />
         )}
         {/* Display the section form if it is in edit or add mode */}
         {isSectionFormActive && (

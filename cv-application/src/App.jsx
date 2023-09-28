@@ -327,9 +327,9 @@ function App() {
       <Sidebar
         activeComponentIndex = { activeComponentIndex }
         handleActiveComponentChange = { handleActiveComponentChange }
-        personalDetailsFormStates = {personalDetailsFormStates}
-        educationSectionStates = {educationSectionStates}
-        experienceSectionStates = {experienceSectionStates}
+        personalDetailsFormStates = { personalDetailsFormStates }
+        educationSectionStates = { educationSectionStates }
+        experienceSectionStates = { experienceSectionStates }
         layout = {layout}
         theme = { theme }
         font = { font }
@@ -352,15 +352,15 @@ function App() {
           <>
             {/* Render the main content with props */}
             <Content
-              personalDetailsFormStates={personalDetailsFormStates}
-              personalDetailsFormEventHandlers={personalDetailsFormEventHandlers}
-              sectionStates={sectionStates}
-              educationSectionStates={educationSectionStates}
-              experienceSectionStates={experienceSectionStates}
-              educationSectionFormStates={educationSectionFormStates}
-              experienceSectionFormStates={experienceSectionFormStates}
-              educationSectionFormEventHandlers={educationSectionFormEventHandlers}
-              experienceSectionFormEventHandlers={experienceSectionFormEventHandlers}
+              personalDetailsFormStates = { personalDetailsFormStates }
+              personalDetailsFormEventHandlers = { personalDetailsFormEventHandlers }
+              sectionStates = { sectionStates }
+              educationSectionStates = { educationSectionStates }
+              experienceSectionStates = { experienceSectionStates }
+              educationSectionFormStates = { educationSectionFormStates }
+              experienceSectionFormStates = { experienceSectionFormStates }
+              educationSectionFormEventHandlers = { educationSectionFormEventHandlers }
+              experienceSectionFormEventHandlers = { experienceSectionFormEventHandlers }
             />
           </>
         )}
@@ -381,10 +381,10 @@ function App() {
       {/* Render a pdf */}
       <div className="pdf" style={{display: isPreviewVisible ? "block" : ""}}>
           <PDFDocument
-            personalDetailsFormStates = {personalDetailsFormStates}
-            educationSectionStates = {educationSectionStates}
-            experienceSectionStates = {experienceSectionStates}
-            layout = {layout}
+            personalDetailsFormStates = { personalDetailsFormStates }
+            educationSectionStates = { educationSectionStates }
+            experienceSectionStates = { experienceSectionStates }
+            layout = { layout }
             theme = { theme }
             font = { font }
           />
@@ -392,12 +392,12 @@ function App() {
 
       {/* Render a mobile controls */}
       <MobileControls
-        handleActiveComponentChange = {handleActiveComponentChange}
+        handleActiveComponentChange = { handleActiveComponentChange }
         togglePreviewVisibility = { togglePreviewVisibility }
-        personalDetailsFormStates = {personalDetailsFormStates}
-        educationSectionStates = {educationSectionStates}
-        experienceSectionStates = {experienceSectionStates}
-        layout = {layout}
+        personalDetailsFormStates = { personalDetailsFormStates }
+        educationSectionStates = { educationSectionStates }
+        experienceSectionStates = { experienceSectionStates }
+        layout = { layout }
         theme = { theme }
         font = { font }
       />
