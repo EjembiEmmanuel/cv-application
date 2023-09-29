@@ -48,7 +48,7 @@ export default function Sidebar({
             <svg className="logo" xmlns="http://www.w3.org/2000/svg">
               <use xlinkHref="#downloadIcon" />
             </svg>
-            <PDFDownloadLink 
+            <PDFDownloadLink
               style={{textDecoration: 'none', color: 'black'}}
               document={
                 <PDFDocument

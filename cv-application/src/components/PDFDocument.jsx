@@ -426,18 +426,16 @@ export default function PDFDocument({
                                     </View>
                                     <View style={styles.itemsDetails}>
                                         {educationItems.map(item => (
-                                            <>
-                                                <View style={styles.item}>
-                                                    <View style={styles.itemLeft}>
-                                                        <Text style={styles.itemDate}>{item.startDate} - {item.endDate}</Text>
-                                                        <Text style={styles.itemLocation}>{item.loc}</Text>
-                                                    </View>
-                                                    <View style={styles.itemRight}>
-                                                        <Text style={styles.itemPrimary}>{item.primary}</Text>
-                                                        <Text style={styles.itemSecondary}>{item.secondary}</Text>
-                                                    </View>
+                                            <View key={item.id} style={styles.item}>
+                                                <View style={styles.itemLeft}>
+                                                    <Text style={styles.itemDate}>{item.startDate} - {item.endDate}</Text>
+                                                    <Text style={styles.itemLocation}>{item.loc}</Text>
                                                 </View>
-                                            </>
+                                                <View style={styles.itemRight}>
+                                                    <Text style={styles.itemPrimary}>{item.primary}</Text>
+                                                    <Text style={styles.itemSecondary}>{item.secondary}</Text>
+                                                </View>
+                                            </View>
                                         ))}
                                     </View>
                                 </>
@@ -451,18 +449,16 @@ export default function PDFDocument({
                                     </View>
                                     <View style={styles.itemsDetails}>
                                         {experienceItems.map(item => (
-                                            <>
-                                                <View style={styles.item}>
-                                                    <View style={styles.itemLeft}>
-                                                        <Text style={styles.itemDate}>{item.startDate} - {item.endDate}</Text>
-                                                        <Text style={styles.itemLocation}>{item.loc}</Text>
-                                                    </View>
-                                                    <View style={styles.itemRight}>
-                                                        <Text style={styles.itemPrimary}>{item.primary}</Text>
-                                                        <Text style={styles.itemSecondary}>{item.secondary}</Text>
-                                                    </View>
+                                            <View key={item.id} style={styles.item}>
+                                                <View style={styles.itemLeft}>
+                                                    <Text style={styles.itemDate}>{item.startDate} - {item.endDate}</Text>
+                                                    <Text style={styles.itemLocation}>{item.loc}</Text>
                                                 </View>
-                                            </>
+                                                <View style={styles.itemRight}>
+                                                    <Text style={styles.itemPrimary}>{item.primary}</Text>
+                                                    <Text style={styles.itemSecondary}>{item.secondary}</Text>
+                                                </View>
+                                            </View>
                                         ))}
                                     </View>
                                 </>

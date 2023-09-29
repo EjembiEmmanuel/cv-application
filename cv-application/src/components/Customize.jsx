@@ -39,9 +39,9 @@ function Layout({
     const style = {backgroundColor: accentColor}
 
     const layouts = [
-        {text: "Top", layout: "topLayout", handleClick: handleLayoutChange, className: "top", style: style},
-        {text: "Left", layout: "leftLayout", handleClick: handleLayoutChange, className: "left", style: style},
-        {text: "Right", layout: "rightLayout", handleClick: handleLayoutChange, className: "right", style: style}
+        { key: 0, text: "Top", layout: "topLayout", handleClick: handleLayoutChange, className: "top", style: style },
+        { key: 1, text: "Left", layout: "leftLayout", handleClick: handleLayoutChange, className: "left", style: style },
+        { key: 2, text: "Right", layout: "rightLayout", handleClick: handleLayoutChange, className: "right", style: style }
     ]
 
     return (
@@ -49,15 +49,14 @@ function Layout({
             <h2 className="title">Layout</h2>
             <div className="layoutToggles">
                 {layouts.map(layout => (
-                    <>
-                        <LayoutToggle
-                            text = { layout.text }
-                            layout = { layout.layout }
-                            handleClick = { layout.handleClick }
-                            className = { layout.className }
-                            style = { layout.style }
-                        />
-                    </>
+                    <LayoutToggle
+                        key={layout.key}
+                        text = { layout.text }
+                        layout = { layout.layout }
+                        handleClick = { layout.handleClick }
+                        className = { layout.className }
+                        style = { layout.style }
+                    />
                 ))}
             </div>
         </div>
@@ -101,11 +100,11 @@ function Font({
     }) {
 
     const fontBtns = [
-        {text: "Roboto", changeFont: handleFontChange, className: "font", fontFamily: "Roboto", isActive: font === "Roboto"},
-        {text: "Mono", changeFont: handleFontChange, className: "font", fontFamily: "monospace", isActive: font === "monospace"},
-        {text: "Courier", changeFont: handleFontChange, className: "font", fontFamily: "Courier", isActive: font === "Courier"},
-        {text: "Arial", changeFont: handleFontChange, className: "font", fontFamily: "Arial", isActive: font === "Arial"},
-        {text: "Serif", changeFont: handleFontChange, className: "font", fontFamily: "serif", isActive: font === "serif"},
+        { key: 0, text: "Roboto", changeFont: handleFontChange, className: "font", fontFamily: "Roboto", isActive: font === "Roboto" },
+        { key: 1, text: "Mono", changeFont: handleFontChange, className: "font", fontFamily: "monospace", isActive: font === "monospace" },
+        { key: 2, text: "Courier", changeFont: handleFontChange, className: "font", fontFamily: "Courier", isActive: font === "Courier" },
+        { key: 3, text: "Arial", changeFont: handleFontChange, className: "font", fontFamily: "Arial", isActive: font === "Arial" },
+        { key: 4, text: "Serif", changeFont: handleFontChange, className: "font", fontFamily: "serif", isActive: font === "serif" },
     ]
 
     return (
@@ -113,17 +112,16 @@ function Font({
             <h2 className="title">Fonts</h2>
             <div className="fontPicker">
                 {fontBtns.map((fontBtn) => (
-                    <>
-                        <FontButton
-                            isActive = { fontBtn.isActive }
-                            text = {fontBtn.text }
-                            changeFont = {fontBtn.changeFont }
-                            className = { fontBtn.className }
-                            fontFamily = { fontBtn.fontFamily }
-                            accentColor = { accentColor }
-                            textColor = { textColor } 
-                        />
-                    </>
+                    <FontButton
+                        key={fontBtn.key}
+                        isActive = { fontBtn.isActive }
+                        text = {fontBtn.text }
+                        changeFont = {fontBtn.changeFont }
+                        className = { fontBtn.className }
+                        fontFamily = { fontBtn.fontFamily }
+                        accentColor = { accentColor }
+                        textColor = { textColor } 
+                    />
                 ))
 
                 }

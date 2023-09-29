@@ -38,10 +38,18 @@
     flex-direction: column;
 }
 
-.content .personalDetails .personalDetailsForm label {
+.content .personalDetails .personalDetailsForm ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+.content .personalDetails .personalDetailsForm ul li {
+    margin: 0 0 1em 0;
+}
+
+.content .personalDetails .personalDetailsForm ul li label {
     font-size: 1em;
     font-weight: bold;
-    margin: 1em 0 0.2em 0;
 }
 
 .content .personalDetails .personalDetailsForm label span {
@@ -50,21 +58,23 @@
     margin: 1em 0 0.2em 0;
 }
 
-.content .personalDetails .personalDetailsForm input {
+.content .personalDetails .personalDetailsForm ul li input {
     background-color: #eef0f4;
+    width: 100%;
     font-size: 1em;
     text-indent: 5px;
     padding: 0.4em 0;
+    margin: 0.2em 0 0 0;
     border: none;
     border-radius: 5px;
 }
 
-.content .personalDetails .personalDetailsForm input:focus {
+.content .personalDetails .personalDetailsForm ul li input:focus {
     outline: 2px solid rgb(0, 136, 255);
     filter: drop-shadow(0 0 0.05em rgb(0, 136, 255));
 }
 
-.content .personalDetails .personalDetailsForm input::placeholder {
+.content .personalDetails .personalDetailsForm ul li input::placeholder {
     font-size: 0.7em;
 }
 

@@ -1,3 +1,4 @@
+import { v4 as uuid } from "uuid"
 import blackDeleteIcon from "../assets/delete-black.svg"
 import educationIcon from "../assets/education.svg"
 import experienceIcon from "../assets/experience.svg"
@@ -153,6 +154,7 @@ export default function Content({
 
   const sections = [
     {
+      id: 0,
       text: "Education",
       mainIcon: educationIcon,
       addIcon: addIcon,
@@ -185,6 +187,7 @@ export default function Content({
       handleLocation: handleSchoolLocationChange,
     },
     {
+      id: 1,
       text: "Professional Experience",
       mainIcon: experienceIcon,
       addIcon: addIcon,
@@ -234,8 +237,8 @@ export default function Content({
 
       {/* Render the experience section */}
       {sections.map(section => (
-        <>
           <Section
+          key={section.id}
           text = { section.text }
           mainIcon = { section.mainIcon }
           addIcon = { section.addIcon }
@@ -267,7 +270,6 @@ export default function Content({
           handleEndDate = { section.handleEndDate }
           handleLocation = { section.handleLocation }
         />
-        </>
       ))}
     </div>
   );
@@ -285,10 +287,10 @@ function PersonalDetails({
 }) {
   // Define an array of input field configurations for the personal details section
   const inputFields = [
-    { id: "name", label: "Full name", placeholder: "First and last name", value: fullname, onChange: handleFullnameChange },
-    { id: "email", label: "Email", placeholder: "Enter email", value: email, onChange: handleEmailChange },
-    { id: "phone", label: "Phone number", placeholder: "Enter phone number", value: phoneNumber, onChange: handlePhoneNumberChange },
-    { id: "address", label: "Address", placeholder: "City, Country", value: address, onChange: handleAddressChange },
+    { key: 0, id: "name", label: "Full name", placeholder: "First and last name", value: fullname, onChange: handleFullnameChange },
+    { key: 1, id: "email", label: "Email", placeholder: "Enter email", value: email, onChange: handleEmailChange },
+    { key: 2, id: "phone", label: "Phone number", placeholder: "Enter phone number", value: phoneNumber, onChange: handlePhoneNumberChange },
+    { key: 3, id: "address", label: "Address", placeholder: "City, Country", value: address, onChange: handleAddressChange },
   ];
 
   // Render the personal details section
@@ -296,16 +298,18 @@ function PersonalDetails({
     <div className="personalDetails">
       <h1>Personal Details</h1>
       <form action="" className="personalDetailsForm">
-        {inputFields.map((field) => (
-          <>
-            {/* Label for the input field */}
-            <label htmlFor={field.id}>
-              {field.label} <span>recommended</span>
-            </label>
-            {/* Input field with its value, placeholder, and onChange event handler */}
-            <input type="text" id={field.id} value={field.value} placeholder={field.placeholder} onChange={field.onChange} />
-          </>
-        ))}
+        <ul>
+          {inputFields.map((field) => (
+            <li key={field.key}>
+              {/* Label for the input field */}
+              <label htmlFor={field.id}>
+                {field.label} <span>recommended</span>
+              </label>
+              {/* Input field with its value, placeholder, and onChange event handler */}
+              <input type="text" id={field.id} value={field.value} placeholder={field.placeholder} onChange={field.onChange} />
+            </li>
+          ))}
+        </ul>
       </form>
     </div>
   );
@@ -365,6 +369,7 @@ function Section({
     const newItems = [...items];
 
     const item = {
+      id: uuid(),
       primary,
       secondary,
       startDate,
