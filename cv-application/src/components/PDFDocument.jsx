@@ -32,6 +32,7 @@ export default function PDFDocument({
     const topLayoutStyles = StyleSheet.create({
         pdf: {
             fontFamily: font,
+            filter: 'drop-shadow(0 0 0.2em rgb(120, 120, 120))'
         },
         page: {
             display: 'flex',
@@ -139,6 +140,7 @@ export default function PDFDocument({
     const leftLayoutStyles = StyleSheet.create({
         pdf: {
             fontFamily: font,
+            filter: 'drop-shadow(0 0 0.2em rgb(120, 120, 120))'
         },
         page: {
             display: 'flex',
@@ -249,6 +251,7 @@ export default function PDFDocument({
     const rightLayoutStyles = StyleSheet.create({
         pdf: {
             fontFamily: font,
+            filter: 'drop-shadow(0 0 0.2em rgb(120, 120, 120))'
         },
         page: {
             display: 'flex',

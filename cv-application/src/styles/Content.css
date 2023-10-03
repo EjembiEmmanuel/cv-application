@@ -24,7 +24,7 @@
     flex-direction: column;
     padding: 1.5em 1em;
     margin: 0 0 1.5em 0;
-    filter: drop-shadow(0 0 0.2em rgb(198, 188, 188));
+    filter: drop-shadow(0 0 0.2em rgb(120, 120, 120));
     border-radius: 20px;
 }
 
@@ -84,7 +84,7 @@
     flex-direction: column;
     margin: 0 0 1.5em 0;
     cursor: pointer;
-    filter: drop-shadow(0 0 0.2em rgb(198, 188, 188));
+    filter: drop-shadow(0 0 0.2em rgb(120, 120, 120));
     border-radius: 20px;
 }
 
